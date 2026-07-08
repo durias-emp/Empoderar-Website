@@ -93,7 +93,7 @@
     <a href="#prensa"><span id="t-nav_prensa">Prensa</span></a>
     <a href="#bitcoin"><span id="t-nav_bitcoin">Bitcoin</span></a>
     <a href="#contacto"><span id="t-nav_contacto">Contacto</span></a>
-    <a href="#"><span id="t-nav_transport">Transporte</span></a>
+    <a href="#"><span id="t-nav_transport">División de Transporte</span></a>
   </div>
 </nav>
 
@@ -313,7 +313,7 @@
 <script>
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const sections = document.querySelectorAll('section[id]');
+  const sections = document.querySelectorAll('section[id], div#prensa');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.innerWidth > 900 && window.scrollY > 40);
     let current = '';
@@ -387,7 +387,7 @@ const _T = {
   'nav_prensa':      ['Prensa', 'Press'],
   'nav_bitcoin':     ['Bitcoin', 'Bitcoin'],
   'nav_contacto':    ['Contacto', 'Contact'],
-  'nav_transport':   ['Transporte', 'Transportation'],
+  'nav_transport':   ['División de Transporte', 'Transportation Division'],
   'lbl_prensa':      ['Prensa', 'Press'],
   'prensa_h2_pre':   ['En los ', 'In the '],
   'prensa_h2_em':    ['medios', 'media'],
