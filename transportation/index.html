@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="../favicon empoderar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    EMPODERAR TRANSPORTATION, DESIGN SYSTEM
@@ -26,7 +26,7 @@
   --brown-muted: #B8A898;
   --white: #FDFAF5;
   --bitcoin: #F7931A;
-  --serif: 'Playfair Display', Georgia, serif;
+  --serif: 'Montserrat', sans-serif;
   --sans: 'Montserrat', sans-serif;
 }
 
@@ -57,8 +57,8 @@ nav.scrolled { background: rgba(236,230,220,0.92); box-shadow: 0 4px 24px rgba(4
 section { padding: 100px 48px; }
 .inner { max-width: 1100px; margin: 0 auto; }
 .section-label { display: inline-block; background: rgba(140,122,101,0.12); border: 1px solid rgba(140,122,101,0.2); padding: 5px 14px; border-radius: 50px; font-size: 12px; font-weight: 500; color: var(--brown-mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
-.section-title { font-family: var(--serif); font-size: clamp(34px, 4.5vw, 56px); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; color: var(--brown-dark); margin-bottom: 20px; }
-.section-title em { font-style: italic; color: var(--brown-mid); }
+.section-title { font-family: var(--serif); font-size: clamp(34px, 4.5vw, 56px); font-weight: 700; line-height: 1.12; letter-spacing: -0.025em; color: var(--brown-dark); margin-bottom: 20px; }
+.section-title em { font-style: italic; font-weight: 600; color: var(--brown-mid); }
 .section-body { font-size: 17px; color: var(--brown-light); line-height: 1.7; max-width: 580px; }
 
 /* --- BUTTONS --- */
@@ -134,11 +134,11 @@ section { padding: 100px 48px; }
 #inicio h1 {
   font-family: var(--serif);
   font-size: clamp(38px, 6vw, 64px);
-  font-weight: 500; line-height: 1.08; letter-spacing: -0.02em;
+  font-weight: 700; line-height: 1.08; letter-spacing: -0.025em;
   color: var(--cream-light); max-width: 800px; margin-bottom: 24px;
   animation: fadeUp 0.8s ease 0.1s both;
 }
-#inicio h1 em { font-style: italic; color: rgba(244,239,230,0.62); }
+#inicio h1 em { font-style: italic; font-weight: 600; color: rgba(244,239,230,0.62); }
 #inicio .hero-content > p {
   font-size: clamp(14px, 1.8vw, 17px);
   color: rgba(244,239,230,0.68);
@@ -211,14 +211,33 @@ section { padding: 100px 48px; }
   flex: 1;
   min-width: 72px;
   cursor: pointer;
-  background-size: cover;
-  background-repeat: no-repeat;
   transition: flex 0.44s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   user-select: none;
   -webkit-user-select: none;
 }
 .acc-card.active { flex: 4.8; }
+
+/* Background image layer — animated independently */
+.acc-bg {
+  position: absolute;
+  inset: -5%;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transition: transform 0.44s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.acc-card.active .acc-bg {
+  animation: cardDrift 14s ease-in-out infinite alternate;
+}
+@keyframes cardDrift {
+  from { transform: scale(1)    translate(0,    0);    }
+  to   { transform: scale(1.08) translate(2.5%, -1.5%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .acc-card.active .acc-bg { animation: none; }
+}
 .acc-card:focus-visible {
   box-shadow: 0 0 0 3px var(--brown-mid), 0 0 0 5px rgba(255,255,255,0.75);
 }
@@ -644,8 +663,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              role="button"
              tabindex="0"
              aria-expanded="true"
-             aria-label="Transporte Aéreo"
-             style="background-image:url('chris-leipelt-pRQCTeQTDwE-unsplash.jpg'); background-position: center 32%;">
+             aria-label="Transporte Aéreo">
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('chris-leipelt-pRQCTeQTDwE-unsplash.jpg'); background-position: center 32%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_air">Aéreo</span>
@@ -666,8 +685,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              role="button"
              tabindex="0"
              aria-expanded="false"
-             aria-label="Transporte Terrestre"
-             style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: center 50%;">
+             aria-label="Transporte Terrestre">
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: center 50%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ground">Terrestre</span>
@@ -688,8 +707,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              role="button"
              tabindex="0"
              aria-expanded="false"
-             aria-label="Transporte Marítimo"
-             style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: center 42%;">
+             aria-label="Transporte Marítimo">
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: center 42%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ocean">Marítimo</span>
@@ -710,8 +729,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              role="button"
              tabindex="0"
              aria-expanded="false"
-             aria-label="Carga Urgente y Emergencias"
-             style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 62% 60%;">
+             aria-label="Carga Urgente y Emergencias">
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 62% 60%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
