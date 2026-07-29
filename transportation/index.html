@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="División de Transporte, Empoderar coordina transporte, documentación, aduanas, protección de carga y resolución de imprevistos.">
+<title>División de Transporte</title>
+<link rel="icon" type="image/png" href="../favicon empoderar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EMPODERAR TRANSPORTATION, DESIGN SYSTEM
+   Mirrors index.html: same variables, typography, patterns.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #F4EFE6;
+  --cream-dark: #EDE6D8;
+  --cream-light: #FAF7F2;
+  --brown-dark: #2C1F14;
+  --brown-mid: #5C4A35;
+  --brown-light: #8C7A65;
+  --brown-muted: #B8A898;
+  --white: #FDFAF5;
+  --bitcoin: #F7931A;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--brown-dark); font-family: var(--sans); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+/* --- TOP BAR --- */
+.top-bar { display: flex; justify-content: space-between; align-items: center; padding: 24px 32px 0; position: absolute; top: 0; left: 0; right: 0; z-index: 200; pointer-events: none; }
+.site-logo, .lang-toggle { pointer-events: auto; }
+.site-logo { display: inline-block; text-decoration: none; transition: opacity 0.3s; }
+.site-logo:hover { opacity: 0.8; }
+.site-logo img { height: 48px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; display: block; }
+
+/* --- LANG TOGGLE --- */
+.lang-toggle { display: inline-flex; align-items: center; background: rgba(236,230,220,0.72); backdrop-filter: blur(24px); border: 1px solid rgba(255,255,255,0.55); border-radius: 50px; padding: 4px; gap: 2px; box-shadow: 0 2px 16px rgba(44,31,20,0.07); }
+.lang-toggle button { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--brown-light); background: transparent; border: none; padding: 7px 14px; border-radius: 50px; cursor: pointer; transition: color 0.2s, background 0.18s; letter-spacing: 0.03em; }
+.lang-toggle button.active { color: var(--brown-dark); background: rgba(255,255,255,0.88); box-shadow: 0 1px 6px rgba(44,31,20,0.10); }
+
+/* --- NAV PILL --- */
+nav { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; align-items: center; padding: 6px; background: rgba(236,230,220,0.72); backdrop-filter: blur(24px) saturate(1.5); -webkit-backdrop-filter: blur(24px) saturate(1.5); border: 1px solid rgba(255,255,255,0.55); border-radius: 50px; box-shadow: 0 2px 16px rgba(44,31,20,0.07); transition: background 0.3s, box-shadow 0.3s, top 0.3s; }
+nav.scrolled { background: rgba(236,230,220,0.92); box-shadow: 0 4px 24px rgba(44,31,20,0.11); top: 18px; }
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-links a { position: relative; z-index: 110; font-family: var(--sans); font-size: 15px; font-weight: 400; color: var(--brown-light); text-decoration: none; padding: 9px 20px; border-radius: 50px; transition: color 0.2s, background 0.18s; white-space: nowrap; }
+.nav-links a:hover { color: var(--brown-dark); }
+.nav-links a.active { color: var(--brown-dark); font-weight: 500; background: rgba(255,255,255,0.88); box-shadow: 0 1px 6px rgba(44,31,20,0.10); }
+
+/* --- SHARED SECTION PATTERNS --- */
+section { padding: 100px 48px; }
+.inner { max-width: 1100px; margin: 0 auto; }
+.section-label { display: inline-block; background: rgba(140,122,101,0.12); border: 1px solid rgba(140,122,101,0.2); padding: 5px 14px; border-radius: 50px; font-size: 12px; font-weight: 500; color: var(--brown-mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
+.section-title { font-family: var(--serif); font-size: clamp(34px, 4.5vw, 56px); font-weight: 500; line-height: 1.12; letter-spacing: -0.025em; color: var(--brown-dark); margin-bottom: 20px; }
+.section-title em { font-style: italic; color: var(--brown-mid); }
+.section-body { font-size: 17px; color: var(--brown-light); line-height: 1.7; max-width: 580px; }
+
+/* --- BUTTONS --- */
+.btn-primary { background: var(--brown-dark); color: var(--cream-light); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; border: none; cursor: pointer; }
+.btn-primary:hover { background: var(--brown-mid); transform: translateY(-2px); }
+.btn-secondary { background: transparent; color: var(--brown-dark); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; text-decoration: none; border: 1px solid rgba(92,74,53,0.3); transition: border-color 0.2s, transform 0.15s, background 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.btn-secondary:hover { border-color: var(--brown-mid); background: rgba(92,74,53,0.05); transform: translateY(-2px); }
+.btn-light { background: var(--cream-light); color: var(--brown-dark); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; border: none; cursor: pointer; }
+.btn-light:hover { background: var(--cream); transform: translateY(-2px); }
+.btn-outline-light { background: transparent; color: var(--cream-light); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); transition: border-color 0.2s, transform 0.15s, background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline-light:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+/* --- REVEAL ANIMATION --- */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   HERO, Full-bleed image slideshow
+   ============================================================ */
+#inicio {
+  background: var(--brown-dark);
+  color: var(--cream-light);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  margin: 0;
+  border-radius: 0;
+  padding: 100px 48px 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Slideshow layers */
+.hero-slideshow { position: absolute; inset: 0; z-index: 0; }
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  will-change: transform, opacity;
+}
+.hero-slide.active {
+  opacity: 1;
+  animation: kenburns 5.5s ease-out forwards;
+}
+@keyframes kenburns {
+  from { transform: scale(1) translateX(0); }
+  to   { transform: scale(1.08) translateX(3%); }
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(160deg, rgba(15,8,3,0.78) 0%, rgba(44,31,20,0.60) 55%, rgba(44,31,20,0.45) 100%);
+}
+
+/* Content above overlay */
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; width: 100%;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.24);
+  padding: 6px 16px; border-radius: 50px; backdrop-filter: blur(8px);
+  font-size: 13px; color: rgba(244,239,230,0.88);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease both;
+}
+#inicio h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 500; line-height: 1.08; letter-spacing: -0.02em;
+  color: var(--cream-light); max-width: 800px; margin-bottom: 24px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+#inicio h1 em { font-style: italic; color: rgba(244,239,230,0.62); }
+#inicio .hero-content > p {
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(244,239,230,0.68);
+  max-width: 560px; line-height: 1.65; margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.8s ease 0.3s both; }
+.hero-pills {
+  position: absolute; bottom: 52px; left: 0; right: 0;
+  display: flex; gap: 0; flex-wrap: nowrap; justify-content: center; align-items: center;
+  padding: 0 16px;
+  z-index: 3;
+  animation: fadeUp 0.8s ease 0.45s both;
+}
+.hero-pill-item { flex: 1 1 0; min-width: 0; text-align: center; padding: 0 6px; }
+.hero-pill-item p { font-size: clamp(9px, 1.1vw, 12px); color: rgba(244,239,230,0.50); line-height: 1.5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Indicator dots */
+.hero-dots {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; z-index: 3;
+}
+.hero-dot {
+  height: 4px; width: 20px; border-radius: 2px;
+  background: rgba(255,255,255,0.30); border: none; cursor: pointer;
+  transition: background 0.3s, width 0.3s; padding: 0;
+}
+.hero-dot.active { background: rgba(255,255,255,0.90); width: 40px; }
+
+/* ============================================================
+   QUICK NEEDS
+   ============================================================ */
+#necesidades {
+  padding: 52px 48px;
+  background: var(--cream-dark);
+}
+.needs-label { text-align: center; font-size: 14px; color: var(--brown-light); margin-bottom: 24px; }
+.needs-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 860px; margin: 0 auto; }
+.need-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 50px;
+  border: 1.5px solid rgba(140,122,101,0.25);
+  background: var(--white); color: var(--brown-dark);
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  cursor: pointer; transition: all 0.18s; text-decoration: none; white-space: nowrap;
+}
+.need-btn:hover, .need-btn.selected { background: var(--brown-dark); color: var(--cream-light); border-color: var(--brown-dark); }
+.need-btn .ni { font-size: 17px; }
+
+/* ============================================================
+   SOLUTIONS ACCORDION
+   Desktop: 4 horizontal pillars, hover/click expands one.
+   Mobile:  vertical stack, tap to expand.
+   ============================================================ */
+#soluciones { background: var(--cream); padding: 100px 48px 80px; }
+.sol-header { text-align: center; margin-bottom: 52px; }
+
+.acc-track {
+  display: flex;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 560px;
+}
+
+.acc-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  flex: 1;
+  min-width: 72px;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: flex 0.44s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.acc-card.active { flex: 4.8; }
+.acc-card:focus-visible {
+  box-shadow: 0 0 0 3px var(--brown-mid), 0 0 0 5px rgba(255,255,255,0.75);
+}
+
+/* Gradient overlay */
+.acc-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(10,4,1,0.94) 0%, rgba(10,4,1,0.44) 52%, rgba(10,4,1,0.14) 100%);
+  transition: background 0.44s ease;
+}
+.acc-card:not(.active) .acc-overlay { background: rgba(10,4,1,0.64); }
+
+/* Collapsed vertical label (desktop, hidden when active) */
+.acc-pill-label {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.22s ease;
+}
+.acc-card.active .acc-pill-label { opacity: 0; }
+
+.acc-pill-icon {
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
+}
+.acc-pill-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-family: var(--sans);
+  font-size: 11.5px;
+  font-weight: 500;
+  color: rgba(244,239,230,0.80);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Mobile-only header row (hidden on desktop) */
+.acc-mob-header { display: none; }
+
+/* Expanded body — fades in when card is active */
+.acc-body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.32s ease 0.20s, transform 0.32s ease 0.20s;
+}
+.acc-card.active .acc-body {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.acc-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 5px 13px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(244,239,230,0.90);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  width: fit-content;
+}
+.acc-icon-sm { font-size: 13px; }
+
+.acc-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.75vw, 26px);
+  font-weight: 500;
+  color: var(--cream-light);
+  line-height: 1.18;
+  margin: 0;
+}
+.acc-desc {
+  font-size: 13.5px;
+  color: rgba(244,239,230,0.66);
+  line-height: 1.64;
+  margin: 2px 0 0;
+  max-width: 380px;
+}
+.acc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(244,239,230,0.88);
+  text-decoration: none;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(244,239,230,0.28);
+  width: fit-content;
+  margin-top: 6px;
+  transition: border-color 0.2s, gap 0.2s, color 0.2s;
+}
+.acc-cta:hover { border-color: rgba(244,239,230,0.72); color: var(--cream-light); gap: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .acc-card { transition: none; }
+  .acc-body, .acc-pill-label, .acc-overlay { transition: none; }
+}
+
+/* ============================================================
+   PROCESS
+   ============================================================ */
+#proceso { background: var(--white); border-radius: 32px; margin: 0 24px; padding: 100px 48px; }
+.proc-header { text-align: center; margin-bottom: 56px; }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1100px; margin: 0 auto; }
+.process-step { }
+.step-num { font-family: var(--serif); font-size: 52px; font-weight: 500; color: rgba(44,31,20,0.07); line-height: 1; margin-bottom: 20px; }
+.process-step h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--brown-dark); margin-bottom: 12px; }
+.process-step p { font-size: 15px; color: var(--brown-light); line-height: 1.7; }
+.proc-closer { max-width: 1100px; margin: 48px auto 0; background: var(--brown-dark); border-radius: 20px; padding: 40px 48px; text-align: center; color: var(--cream-light); }
+.proc-closer p { font-family: var(--serif); font-size: clamp(18px, 2vw, 26px); font-style: italic; line-height: 1.45; color: var(--cream-light); }
+.proc-closer cite { font-size: 13px; color: var(--brown-muted); font-style: normal; display: block; margin-top: 10px; }
+
+/* ============================================================
+   TRUST / WHY EMPODERAR
+   ============================================================ */
+#porque { background: var(--cream); padding: 100px 48px; }
+.trust-header { text-align: center; margin-bottom: 56px; }
+.trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.trust-card { background: var(--white); border: 1px solid rgba(140,122,101,0.12); border-radius: 20px; padding: 32px; transition: transform 0.2s; }
+.trust-card:hover { transform: translateY(-4px); }
+.trust-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+.trust-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--brown-dark); margin-bottom: 10px; }
+.trust-card p { font-size: 14px; color: var(--brown-light); line-height: 1.65; }
+
+/* ============================================================
+   QUOTE FORM, 3-STEP
+   ============================================================ */
+#cotizar { background: var(--white); border-radius: 32px; margin: 0 24px; padding: 100px 48px; }
+.quote-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+.quote-info h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 500; color: var(--brown-dark); margin-bottom: 16px; }
+.quote-info > p { font-size: 15px; color: var(--brown-light); line-height: 1.7; margin-bottom: 28px; }
+.quote-expect { background: var(--cream-dark); border-radius: 16px; padding: 20px 24px; font-size: 14px; color: var(--brown-mid); line-height: 1.65; margin-bottom: 28px; }
+.quote-expect strong { color: var(--brown-dark); display: block; margin-bottom: 4px; }
+.quote-contacts { display: flex; flex-direction: column; gap: 10px; }
+.quote-contacts a { font-size: 15px; color: var(--brown-dark); font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.quote-contacts a:hover { color: var(--brown-mid); }
+
+/* Stepper */
+.step-indicator { display: flex; align-items: center; margin-bottom: 36px; }
+.step-dot { width: 30px; height: 30px; border-radius: 50%; background: var(--cream-dark); border: 2px solid var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--brown-muted); transition: all 0.3s; flex-shrink: 0; }
+.step-dot.active { background: var(--brown-dark); border-color: var(--brown-dark); color: var(--cream-light); }
+.step-dot.done { background: var(--brown-mid); border-color: var(--brown-mid); color: var(--cream-light); }
+.step-line { flex: 1; height: 2px; background: var(--cream-dark); transition: background 0.3s; }
+.step-line.done { background: var(--brown-mid); }
+
+/* Form */
+.form-step { display: none; flex-direction: column; gap: 16px; }
+.form-step.active { display: flex; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label { font-size: 13px; font-weight: 500; color: var(--brown-mid); }
+.form-group input,
+.form-group select,
+.form-group textarea { background: var(--cream-light); border: 1px solid rgba(140,122,101,0.2); border-radius: 12px; padding: 12px 16px; font-family: var(--sans); font-size: 15px; color: var(--brown-dark); outline: none; transition: border-color 0.2s; -webkit-appearance: none; width: 100%; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--brown-mid); }
+.form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238C7A65' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.check-group { display: flex; align-items: flex-start; gap: 10px; }
+.check-group input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--brown-dark); flex-shrink: 0; margin-top: 3px; cursor: pointer; }
+.check-group label { font-size: 13px; color: var(--brown-light); line-height: 1.55; cursor: pointer; }
+.field-error { font-size: 12px; color: #B83232; margin-top: 2px; display: none; }
+.field-error.show { display: block; }
+.form-actions { display: flex; gap: 10px; align-items: center; margin-top: 4px; }
+.btn-step-next { background: var(--brown-dark); color: var(--cream-light); padding: 12px 26px; border-radius: 50px; font-family: var(--sans); font-size: 15px; font-weight: 500; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+.btn-step-next:hover { background: var(--brown-mid); transform: translateY(-2px); }
+.btn-step-back { background: transparent; color: var(--brown-light); padding: 12px 18px; border-radius: 50px; font-family: var(--sans); font-size: 14px; border: none; cursor: pointer; transition: color 0.2s; }
+.btn-step-back:hover { color: var(--brown-dark); }
+.form-notice { background: rgba(140,122,101,0.08); border: 1px solid rgba(140,122,101,0.22); border-radius: 12px; padding: 16px 20px; font-size: 13px; color: var(--brown-mid); line-height: 1.6; display: none; }
+.form-notice.show { display: block; }
+.form-success { display: none; padding: 40px 0; text-align: center; }
+.form-success.show { display: block; }
+.form-success .check-circle { font-size: 52px; margin-bottom: 16px; }
+.form-success h3 { font-family: var(--serif); font-size: 28px; color: var(--brown-dark); margin-bottom: 12px; }
+.form-success p { font-size: 15px; color: var(--brown-light); }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+#contacto { background: var(--cream); padding: 100px 48px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+.contact-left h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 500; color: var(--brown-dark); margin-bottom: 16px; }
+.contact-left > p { font-size: 16px; color: var(--brown-light); line-height: 1.7; margin-bottom: 40px; }
+.contact-detail { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-item-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.contact-item-text h4 { font-size: 12px; font-weight: 500; color: var(--brown-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+.contact-item-text a, .contact-item-text p { font-size: 16px; color: var(--brown-dark); font-weight: 500; text-decoration: none; }
+.contact-item-text a:hover { color: var(--brown-mid); }
+.contact-box { background: var(--brown-dark); border-radius: 24px; padding: 48px; color: var(--cream-light); }
+.contact-box h3 { font-family: var(--serif); font-size: 28px; font-weight: 500; margin-bottom: 14px; }
+.contact-box > p { font-size: 15px; color: rgba(244,239,230,0.62); line-height: 1.7; margin-bottom: 32px; }
+.tracking-note { margin-top: 24px; font-size: 12px; color: rgba(244,239,230,0.3); font-style: italic; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+.footer-logo { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--brown-dark); }
+.footer-tagline { font-size: 14px; color: var(--brown-light); }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+.footer-links a { font-size: 13px; color: var(--brown-muted); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--brown-dark); }
+.footer-divider { width: 100%; height: 1px; background: rgba(140,122,101,0.15); margin: 12px 0; }
+.footer-bottom { font-size: 13px; color: var(--brown-muted); }
+
+/* ============================================================
+   RESPONSIVE, 900px (mirrors index.html breakpoint)
+   ============================================================ */
+@media (max-width: 900px) {
+  /* Nav */
+  nav { position: sticky !important; top: 10px !important; left: auto !important; transform: none !important; width: fit-content; max-width: calc(100% - 32px); margin: 10px auto 0; padding: 4px; overflow: hidden; z-index: 100; }
+  .nav-links { gap: 0; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 12px; padding: 9px 11px; }
+
+  /* Top bar */
+  .top-bar { padding: 14px 16px 0; }
+  .site-logo img { height: 32px; }
+  .lang-toggle button { font-size: 12px; padding: 6px 11px; }
+
+  /* Hero */
+  #inicio { margin: 10px 10px 0; border-radius: 20px; padding: 80px 20px 56px; }
+  #inicio h1 { font-size: clamp(30px, 7.5vw, 44px); }
+  .hero-actions { flex-direction: column; align-items: center; gap: 10px; }
+  .hero-actions a { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
+  .hero-pills { margin-top: 40px; padding-top: 32px; }
+  .hero-pill-item { padding: 0 10px; }
+
+  /* Needs */
+  #necesidades { padding: 40px 16px; }
+  .needs-grid { gap: 8px; }
+  .need-btn { font-size: 13px; padding: 10px 16px; }
+
+  /* Solutions accordion, mobile */
+  #soluciones { padding: 56px 16px; }
+  .acc-track { flex-direction: column; height: auto; gap: 8px; }
+  .acc-card { flex: none; min-width: 0; border-radius: 16px; height: 68px; transition: height 0.42s cubic-bezier(0.4,0,0.2,1); }
+  .acc-card.active { flex: none; height: 390px; }
+  .acc-pill-label { display: none; }
+  .acc-mob-header {
+    display: flex;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 4;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    pointer-events: none;
+  }
+  .acc-mob-icon { font-size: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.55)); }
+  .acc-mob-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cream-light);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .acc-mob-chevron {
+    font-size: 10px;
+    color: rgba(244,239,230,0.62);
+    transition: transform 0.38s ease;
+    flex-shrink: 0;
+  }
+  .acc-card.active .acc-mob-chevron { transform: rotate(180deg); }
+  .acc-body { padding: 20px 20px 26px; }
+  .acc-title { font-size: 18px; }
+  .acc-desc { font-size: 13px; }
+
+  /* Process */
+  #proceso { margin: 0 10px; border-radius: 20px; padding: 56px 20px; }
+  .process-grid { grid-template-columns: 1fr; gap: 32px; }
+  .step-num { font-size: 40px; }
+  .proc-closer { padding: 28px 24px; }
+
+  /* Trust */
+  #porque { padding: 56px 16px; }
+  .trust-grid { grid-template-columns: 1fr; }
+
+  /* Quote */
+  #cotizar { margin: 0 10px; border-radius: 20px; padding: 56px 20px; }
+  .quote-layout { grid-template-columns: 1fr; gap: 40px; }
+  .form-row-2 { grid-template-columns: 1fr; }
+
+  /* Contact */
+  #contacto { padding: 56px 16px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Footer */
+  footer { padding: 36px 16px 40px; }
+  .footer-links { gap: 14px; }
+
+  section { padding: 56px 16px; }
+  .section-title { font-size: clamp(26px, 6vw, 38px); }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<div class="top-bar">
+  <a href="../" class="site-logo" aria-label="Volver a EmpoderarSV">
+    <img src="../favicon empoderar.png" alt="EmpoderarSV">
+  </a>
+  <div class="lang-toggle" id="langToggle">
+    <button id="btnES" class="active" onclick="setLang('es')">ESP</button>
+    <button id="btnEN" onclick="setLang('en')">ENG</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAV PILL
+     ============================================================ -->
+<nav id="navbar" aria-label="Navegación principal">
+  <div class="nav-links">
+    <a href="#inicio"><span id="t-nav_inicio">Inicio</span></a>
+    <a href="#soluciones"><span id="t-nav_sol">Soluciones</span></a>
+    <a href="#proceso"><span id="t-nav_proc">Proceso</span></a>
+    <a href="#cotizar"><span id="t-nav_quot">Cotizar</span></a>
+    <a href="#contacto"><span id="t-nav_cont">Contacto</span></a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="inicio" aria-labelledby="hero-heading">
+
+  <!-- Background image slideshow -->
+  <div class="hero-slideshow" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('PLANE copy.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('TRUCK.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('CARGOSHIP.jpg')"></div>
+  </div>
+
+  <!-- Darkening overlay -->
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <!-- Text content -->
+  <div class="hero-content">
+    <div class="hero-badge"><span id="t-hero_badge">División de Transporte, EmpoderarSV</span></div>
+
+    <h1 id="hero-heading">
+      <span id="t-hero_h1_pre">Un solo equipo responsable para </span><em><span id="t-hero_h1_em">carga compleja</span></em>
+    </h1>
+
+    <p id="t-hero_p">Movemos su carga de principio a fin. Empoderar coordina transporte, documentación, aduanas, protección de carga y resolución de imprevistos para que usted tenga un solo equipo responsable.</p>
+
+    <div class="hero-actions">
+      <a href="#cotizar" class="btn-light" id="t-hero_cta1">Solicitar cotización</a>
+      <a href="#contacto" class="btn-outline-light" id="t-hero_cta2">Hablar con logística →</a>
+    </div>
+
+  </div>
+
+  <!-- Service labels pinned above dots -->
+  <div class="hero-pills" aria-hidden="true">
+    <div class="hero-pill-item"><p id="t-pill1">Transporte</p></div>
+    <div class="hero-pill-item"><p id="t-pill2">Documentación</p></div>
+    <div class="hero-pill-item"><p id="t-pill3">Aduanas</p></div>
+    <div class="hero-pill-item"><p id="t-pill4">Protección de carga</p></div>
+    <div class="hero-pill-item"><p id="t-pill5">Resolución de imprevistos</p></div>
+  </div>
+
+  <!-- Slide indicator dots -->
+  <div class="hero-dots" aria-label="Navegación de imágenes">
+    <button class="hero-dot active" data-slide="0" aria-label="Imagen 1"></button>
+    <button class="hero-dot" data-slide="1" aria-label="Imagen 2"></button>
+    <button class="hero-dot" data-slide="2" aria-label="Imagen 3"></button>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     SOLUTIONS
+     ============================================================ -->
+<section id="soluciones" aria-labelledby="sol-heading">
+  <div class="sol-header reveal">
+    <span class="section-label" id="t-sol_label">Soluciones</span>
+    <h2 class="section-title" id="sol-heading">
+      <span id="t-sol_h2_pre">Más que transporte: </span><em><span id="t-sol_h2_em">una solución completa</span></em>
+    </h2>
+    <p class="section-body" style="margin: 0 auto;" id="t-sol_sub">Coordinamos el modo de transporte adecuado, los socios correctos, la documentación, las aduanas y la protección de carga, todo desde un solo punto de contacto.</p>
+  </div>
+
+  <div class="acc-track reveal" role="list">
+
+    <!-- Card 1: Transporte Aéreo -->
+    <article class="acc-card active"
+             role="button"
+             tabindex="0"
+             aria-expanded="true"
+             aria-label="Transporte Aéreo"
+             style="background-image:url('chris-leipelt-pRQCTeQTDwE-unsplash.jpg'); background-position: center 32%;">
+      <div class="acc-overlay" aria-hidden="true"></div>
+      <div class="acc-pill-label" aria-hidden="true">
+        <span class="acc-pill-icon">✈</span>
+        <span class="acc-pill-text" id="t-pill_air">Aéreo</span>
+      </div>
+      <div class="acc-mob-header" aria-hidden="true">
+        <span class="acc-mob-icon">✈</span>
+        <span class="acc-mob-title" id="t-sol_air_mob">Transporte Aéreo</span>
+        <span class="acc-mob-chevron">▼</span>
+      </div>
+      <div class="acc-body">
+        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">✈</span><span id="t-tag_air">Aéreo</span></span>
+        <h3 class="acc-title" id="t-sol_air_h">Transporte Aéreo</h3>
+        <p class="acc-desc" id="t-sol_air_p">Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.</p>
+        <a href="#cotizar" class="acc-cta" id="t-sol_air_cta">Cotizar este servicio →</a>
+      </div>
+    </article>
+
+    <!-- Card 2: Transporte Terrestre -->
+    <article class="acc-card"
+             role="button"
+             tabindex="0"
+             aria-expanded="false"
+             aria-label="Transporte Terrestre"
+             style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: center 50%;">
+      <div class="acc-overlay" aria-hidden="true"></div>
+      <div class="acc-pill-label" aria-hidden="true">
+        <span class="acc-pill-icon">🚛</span>
+        <span class="acc-pill-text" id="t-pill_ground">Terrestre</span>
+      </div>
+      <div class="acc-mob-header" aria-hidden="true">
+        <span class="acc-mob-icon">🚛</span>
+        <span class="acc-mob-title" id="t-sol_ground_mob">Transporte Terrestre</span>
+        <span class="acc-mob-chevron">▼</span>
+      </div>
+      <div class="acc-body">
+        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">🚛</span><span id="t-tag_ground">Terrestre</span></span>
+        <h3 class="acc-title" id="t-sol_ground_h">Transporte Terrestre</h3>
+        <p class="acc-desc" id="t-sol_ground_p">Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.</p>
+        <a href="#cotizar" class="acc-cta" id="t-sol_ground_cta">Cotizar este servicio →</a>
+      </div>
+    </article>
+
+    <!-- Card 3: Transporte Marítimo -->
+    <article class="acc-card"
+             role="button"
+             tabindex="0"
+             aria-expanded="false"
+             aria-label="Transporte Marítimo"
+             style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: center 42%;">
+      <div class="acc-overlay" aria-hidden="true"></div>
+      <div class="acc-pill-label" aria-hidden="true">
+        <span class="acc-pill-icon">🚢</span>
+        <span class="acc-pill-text" id="t-pill_ocean">Marítimo</span>
+      </div>
+      <div class="acc-mob-header" aria-hidden="true">
+        <span class="acc-mob-icon">🚢</span>
+        <span class="acc-mob-title" id="t-sol_ocean_mob">Transporte Marítimo</span>
+        <span class="acc-mob-chevron">▼</span>
+      </div>
+      <div class="acc-body">
+        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">🚢</span><span id="t-tag_ocean">Marítimo</span></span>
+        <h3 class="acc-title" id="t-sol_ocean_h">Transporte Marítimo</h3>
+        <p class="acc-desc" id="t-sol_ocean_p">Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.</p>
+        <a href="#cotizar" class="acc-cta" id="t-sol_ocean_cta">Cotizar este servicio →</a>
+      </div>
+    </article>
+
+    <!-- Card 4: Carga Urgente -->
+    <article class="acc-card"
+             role="button"
+             tabindex="0"
+             aria-expanded="false"
+             aria-label="Carga Urgente y Emergencias"
+             style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 62% 60%;">
+      <div class="acc-overlay" aria-hidden="true"></div>
+      <div class="acc-pill-label" aria-hidden="true">
+        <span class="acc-pill-icon">⚡</span>
+        <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
+      </div>
+      <div class="acc-mob-header" aria-hidden="true">
+        <span class="acc-mob-icon">⚡</span>
+        <span class="acc-mob-title" id="t-sol_urgent_mob">Carga Urgente</span>
+        <span class="acc-mob-chevron">▼</span>
+      </div>
+      <div class="acc-body">
+        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">⚡</span><span id="t-tag_urgent">Urgente</span></span>
+        <h3 class="acc-title" id="t-sol_urgent_h">Carga Urgente y Emergencias</h3>
+        <p class="acc-desc" id="t-sol_urgent_p">Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.</p>
+        <a href="#cotizar" class="acc-cta" id="t-sol_urgent_cta">Cotizar este servicio →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS, HOW IT WORKS
+     ============================================================ -->
+<section id="proceso" aria-labelledby="proc-heading">
+  <div class="proc-header reveal">
+    <span class="section-label" id="t-proc_label">Cómo funciona</span>
+    <h2 class="section-title" id="proc-heading">
+      <span id="t-proc_h2_pre">Así trabajamos </span><em><span id="t-proc_h2_em">con usted</span></em>
+    </h2>
+  </div>
+
+  <div class="process-grid reveal">
+    <div class="process-step">
+      <div class="step-num" aria-hidden="true">01</div>
+      <h3 id="t-step1_h">Entendemos su carga</h3>
+      <p id="t-step1_p">Analizamos el tipo de carga, urgencia, origen, destino, documentación requerida y riesgos operativos. Sin conocer el detalle, no podemos diseñar la solución correcta.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num" aria-hidden="true">02</div>
+      <h3 id="t-step2_h">Diseñamos y coordinamos</h3>
+      <p id="t-step2_p">Seleccionamos y coordinamos el modo de transporte adecuado, los socios, la documentación, las aduanas y la protección de carga. Una solución cohesiva, no piezas sueltas.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num" aria-hidden="true">03</div>
+      <h3 id="t-step3_h">Acompañamos hasta la resolución</h3>
+      <p id="t-step3_p">Mantenemos al cliente informado y ayudamos a resolver problemas si el envío cambia, se retrasa o requiere intervención. No desaparecemos una vez contratado el servicio.</p>
+    </div>
+  </div>
+
+  <div class="proc-closer reveal">
+    <p id="t-proc_quote">"Un equipo. Un punto de contacto. Una solución coordinada."</p>
+    <cite id="t-proc_cite">Empoderar División de Transporte</cite>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY EMPODERAR
+     ============================================================ -->
+<section id="porque" aria-labelledby="trust-heading">
+  <div class="trust-header reveal">
+    <span class="section-label" id="t-trust_label">Por qué Empoderar</span>
+    <h2 class="section-title" id="trust-heading"><em><span id="t-trust_h2">Coordinación integral, no solo transporte</span></em></h2>
+  </div>
+
+  <div class="trust-grid reveal">
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">🗂️</div>
+      <h3 id="t-trust1_h">Coordinación integral</h3>
+      <p id="t-trust1_p">Integramos todos los elementos del movimiento de carga en un proceso cohesivo. Usted no coordina múltiples proveedores, nosotros lo hacemos.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">📄</div>
+      <h3 id="t-trust2_h">Documentación y aduanas</h3>
+      <p id="t-trust2_p">Gestión de documentación de exportación, importación y trámites aduaneros. Reducimos los errores que generan retrasos y costos adicionales.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">🛡️</div>
+      <h3 id="t-trust3_h">Protección de carga</h3>
+      <p id="t-trust3_p">Apoyo para la evaluación y gestión de protección de carga y seguros según el tipo y valor del embarque. No asumimos riesgos innecesarios con su carga.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">🤝</div>
+      <h3 id="t-trust4_h">Red de socios logísticos</h3>
+      <p id="t-trust4_p">Trabajamos con operadores y socios logísticos seleccionados por confiabilidad y trayectoria, no solo por precio.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">💬</div>
+      <h3 id="t-trust5_h">Comunicación clara</h3>
+      <p id="t-trust5_p">Mantenemos al cliente informado durante todo el proceso. Usted sabe qué pasa con su carga sin necesitar perseguir información.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon" aria-hidden="true">🔧</div>
+      <h3 id="t-trust6_h">Respuesta ante imprevistos</h3>
+      <p id="t-trust6_p">Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUOTE FORM, 3-STEP
+     To activate form submission, set QUOTE_FORM_ENDPOINT in JS.
+     ============================================================ -->
+<section id="cotizar" aria-labelledby="quot-heading">
+  <div class="quote-layout">
+
+    <!-- Left: info -->
+    <div class="quote-info reveal">
+      <span class="section-label" id="t-quot_label">Cotización</span>
+      <h2 id="quot-heading" id="t-quot_h2">Cuéntenos sobre su carga</h2>
+      <p id="t-quot_p">Respondemos cada solicitud con atención personalizada. Comparta los detalles de su necesidad logística y un especialista se comunicará con usted.</p>
+      <div class="quote-expect">
+        <strong id="t-quot_exp_h">¿Qué esperar?</strong>
+        <span id="t-quot_exp_p">Revisaremos su solicitud y un especialista de logística se comunicará con usted para diseñar una solución adecuada. No compartimos su información con terceros.</span>
+      </div>
+      <div class="quote-contacts">
+        <a href="mailto:hola@empoderarsv.com" aria-label="Correo electrónico">📧 hola@empoderarsv.com</a>
+        <a href="tel:+50370079036" aria-label="Teléfono">📞 +503 7007 9036</a>
+      </div>
+    </div>
+
+    <!-- Right: form -->
+    <div class="reveal">
+
+      <!-- Step indicator -->
+      <div class="step-indicator" aria-label="Paso del formulario">
+        <div class="step-dot active" id="dot1" aria-label="Paso 1">1</div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2" aria-label="Paso 2">2</div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-dot" id="dot3" aria-label="Paso 3">3</div>
+      </div>
+
+      <form id="quoteForm" novalidate>
+
+        <!-- STEP 1, Logistics need -->
+        <div class="form-step active" id="step1">
+          <div class="form-group">
+            <label for="f-service" id="t-lbl_service">Necesidad logística *</label>
+            <select id="f-service" required aria-required="true">
+              <option value="" id="t-f_svc_def">Seleccione</option>
+              <option value="urgent" id="t-f_svc_urg">Carga urgente</option>
+              <option value="air" id="t-f_svc_air">Transporte aéreo</option>
+              <option value="ground" id="t-f_svc_gnd">Transporte terrestre</option>
+              <option value="ocean" id="t-f_svc_sea">Transporte marítimo</option>
+              <option value="special" id="t-f_svc_spc">Operación especializada</option>
+              <option value="notsure" id="t-f_svc_ns">No estoy seguro</option>
+            </select>
+            <span class="field-error" id="err-service" role="alert" id="t-err_service">Por favor seleccione una opción.</span>
+          </div>
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="f-origin" id="t-lbl_origin">Origen *</label>
+              <input type="text" id="f-origin" data-ph-es="Ciudad o país de origen" data-ph-en="Origin city or country" required aria-required="true">
+              <span class="field-error" id="err-origin" role="alert">Campo requerido.</span>
+            </div>
+            <div class="form-group">
+              <label for="f-dest" id="t-lbl_dest">Destino *</label>
+              <input type="text" id="f-dest" data-ph-es="Ciudad o país de destino" data-ph-en="Destination city or country" required aria-required="true">
+              <span class="field-error" id="err-dest" role="alert">Campo requerido.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-timing" id="t-lbl_timing">Urgencia o fecha estimada</label>
+            <input type="text" id="f-timing" data-ph-es="Ej: en 3 días, próxima semana, sin urgencia…" data-ph-en="E.g. within 3 days, next week, no urgency…">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-step-next" onclick="nextStep(1)" id="t-btn_next1">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2, Cargo details -->
+        <div class="form-step" id="step2">
+          <div class="form-group">
+            <label for="f-cargo" id="t-lbl_cargo">Tipo de mercancía *</label>
+            <input type="text" id="f-cargo" data-ph-es="Ej: maquinaria industrial, textiles, autopartes…" data-ph-en="E.g. industrial machinery, textiles, auto parts…" required aria-required="true">
+            <span class="field-error" id="err-cargo" role="alert">Campo requerido.</span>
+          </div>
+          <div class="form-group">
+            <label for="f-weight" id="t-lbl_weight">Peso estimado</label>
+            <input type="text" id="f-weight" data-ph-es="Ej: 500 kg, 2 toneladas…" data-ph-en="E.g. 500 kg, 2 tons…">
+          </div>
+          <div class="form-group">
+            <label for="f-hazmat" id="t-lbl_hazmat">Mercancías peligrosas</label>
+            <select id="f-hazmat">
+              <option value="no" id="t-f_haz_no">No</option>
+              <option value="yes" id="t-f_haz_yes">Sí</option>
+              <option value="notsure" id="t-f_haz_ns">No estoy seguro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-notes" id="t-lbl_notes">Detalles adicionales (opcional)</label>
+            <textarea id="f-notes" data-ph-es="Información adicional relevante para su operación…" data-ph-en="Any additional details relevant to your operation…"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-step-back" onclick="prevStep(2)" id="t-btn_back2">← Atrás</button>
+            <button type="button" class="btn-step-next" onclick="nextStep(2)" id="t-btn_next2">Siguiente →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3, Contact -->
+        <div class="form-step" id="step3">
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="f-name" id="t-lbl_name">Nombre *</label>
+              <input type="text" id="f-name" data-ph-es="Su nombre completo" data-ph-en="Your full name" required aria-required="true">
+              <span class="field-error" id="err-name" role="alert">Campo requerido.</span>
+            </div>
+            <div class="form-group">
+              <label for="f-company" id="t-lbl_company">Empresa</label>
+              <input type="text" id="f-company" data-ph-es="Nombre de su empresa" data-ph-en="Your company name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-email" id="t-lbl_email">Correo electrónico *</label>
+            <input type="email" id="f-email" data-ph-es="correo@empresa.com" data-ph-en="email@company.com" required aria-required="true">
+            <span class="field-error" id="err-email" role="alert">Ingrese un correo válido.</span>
+          </div>
+          <div class="form-group">
+            <label for="f-phone" id="t-lbl_phone">Teléfono</label>
+            <input type="tel" id="f-phone" data-ph-es="+503 XXXX XXXX" data-ph-en="+1 XXX XXX XXXX">
+          </div>
+          <div class="form-group">
+            <div class="check-group">
+              <input type="checkbox" id="f-consent" required aria-required="true">
+              <label for="f-consent" id="t-lbl_consent">Acepto que Empoderar se comunique conmigo para atender esta solicitud. No compartiremos su información con terceros.</label>
+            </div>
+            <span class="field-error" id="err-consent" role="alert">Debe aceptar para continuar.</span>
+          </div>
+          <!-- Shown only if QUOTE_FORM_ENDPOINT is not configured -->
+          <div class="form-notice" id="form-notice">
+            <strong>⚠️ <span id="t-notice_h">Configuración pendiente</span></strong><br>
+            <span id="t-notice_p">Este formulario requiere un endpoint de correo o CRM configurado antes del lanzamiento en producción. Por ahora, utilice los datos de contacto directos indicados en esta página.</span>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-step-back" onclick="prevStep(3)" id="t-btn_back3">← Atrás</button>
+            <button type="submit" class="btn-step-next" id="t-btn_submit">Enviar solicitud →</button>
+          </div>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="form-success" id="formSuccess">
+          <div class="check-circle" aria-hidden="true">✓</div>
+          <h3 id="t-success_h">Solicitud recibida</h3>
+          <p id="t-success_p">Revisaremos su solicitud y un especialista de logística se comunicará con usted pronto.</p>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contacto" aria-labelledby="cont-heading">
+  <div class="contact-grid">
+
+    <div class="contact-left reveal">
+      <span class="section-label" id="t-cont_label">Contacto</span>
+      <h2 id="cont-heading" id="t-cont_h2">Hablemos de su operación</h2>
+      <p id="t-cont_p">Para carga urgente, compleja o que requiere conversación directa, nuestro equipo de logística está disponible.</p>
+      <div class="contact-detail">
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">📧</div>
+          <div class="contact-item-text">
+            <h4 id="t-cont_lbl_email">Correo</h4>
+            <a href="mailto:hola@empoderarsv.com">hola@empoderarsv.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon" aria-hidden="true">📞</div>
+          <div class="contact-item-text">
+            <h4 id="t-cont_lbl_phone">Teléfono</h4>
+            <a href="tel:+50370079036">+503 7007 9036</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="contact-box">
+        <h3 id="t-cont_box_h">¿Necesita mover carga ahora?</h3>
+        <p id="t-cont_box_p">Carga urgente, inusual o con requerimientos especiales. Contáctenos directamente y un especialista evaluará su necesidad sin demora.</p>
+        <a href="mailto:hola@empoderarsv.com" class="btn-light" id="t-cont_box_btn">Escribir a logística</a>
+        <p class="tracking-note" id="t-tracking_note">Seguimiento de envíos para clientes, próximamente.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="footer-logo">EmpoderarSV</div>
+  <div class="footer-tagline" id="t-footer_tag">División de Transporte, Un equipo. Un punto de contacto.</div>
+  <div class="footer-links">
+    <a href="#inicio" id="t-f_inicio">Inicio</a>
+    <a href="#soluciones" id="t-f_sol">Soluciones</a>
+    <a href="#proceso" id="t-f_proc">Proceso</a>
+    <a href="#cotizar" id="t-f_quot">Cotizar</a>
+    <a href="#contacto" id="t-f_cont">Contacto</a>
+    <a href="../" id="t-f_main">← EmpoderarSV</a>
+    <a href="mailto:hola@empoderarsv.com">hola@empoderarsv.com</a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom"><span id="t-footer_copy">© 2026 EmpoderarSV. Todos los derechos reservados.</span></div>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIGURATION
+   Set QUOTE_FORM_ENDPOINT to a live handler before production.
+   E.g. a Vercel serverless function at /api/quote, or a
+   compatible form service endpoint.
+   ============================================================ */
+const QUOTE_FORM_ENDPOINT = ''; // TODO: configure before production launch
+
+/* ============================================================
+   NAV, scroll-based active highlighting
+   ============================================================ */
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-links a');
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.innerWidth > 900 && window.scrollY > 40);
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+}, { passive: true });
+
+/* ============================================================
+   REVEAL ANIMATIONS, IntersectionObserver (mirrors index.html)
+   ============================================================ */
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   QUICK NEEDS SELECTOR
+   Prefills #f-service and scrolls to the quote form.
+   ============================================================ */
+function selectNeed(btn) {
+  document.querySelectorAll('.need-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const sel = document.getElementById('f-service');
+  if (sel) sel.value = btn.dataset.value;
+  document.getElementById('cotizar').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ============================================================
+   3-STEP FORM
+   ============================================================ */
+let currentStep = 1;
+
+function updateStepper(step) {
+  [1, 2, 3].forEach(n => {
+    const dot = document.getElementById('dot' + n);
+    dot.className = n < step ? 'step-dot done' : n === step ? 'step-dot active' : 'step-dot';
+  });
+  [1, 2].forEach(n => {
+    const line = document.getElementById('line' + n);
+    if (line) line.className = n < step ? 'step-line done' : 'step-line';
+  });
+  ['step1', 'step2', 'step3'].forEach((id, i) => {
+    document.getElementById(id).classList.toggle('active', i + 1 === step);
+  });
+  currentStep = step;
+}
+
+function showError(id, show) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('show', show);
+}
+
+function validateStep(step) {
+  let ok = true;
+  if (step === 1) {
+    const svc = document.getElementById('f-service').value;
+    const orig = document.getElementById('f-origin').value.trim();
+    const dest = document.getElementById('f-dest').value.trim();
+    if (!svc)  { showError('err-service', true); ok = false; } else showError('err-service', false);
+    if (!orig) { showError('err-origin', true);  ok = false; } else showError('err-origin', false);
+    if (!dest) { showError('err-dest', true);    ok = false; } else showError('err-dest', false);
+  }
+  if (step === 2) {
+    const cargo = document.getElementById('f-cargo').value.trim();
+    if (!cargo) { showError('err-cargo', true); ok = false; } else showError('err-cargo', false);
+  }
+  if (step === 3) {
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const consent = document.getElementById('f-consent').checked;
+    if (!name)                     { showError('err-name', true);    ok = false; } else showError('err-name', false);
+    if (!email || !email.includes('@')) { showError('err-email', true); ok = false; } else showError('err-email', false);
+    if (!consent)                  { showError('err-consent', true); ok = false; } else showError('err-consent', false);
+  }
+  return ok;
+}
+
+function nextStep(from) {
+  if (!validateStep(from)) return;
+  if (from < 3) updateStepper(from + 1);
+}
+
+function prevStep(from) {
+  if (from > 1) updateStepper(from - 1);
+}
+
+document.getElementById('quoteForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!validateStep(3)) return;
+
+  if (!QUOTE_FORM_ENDPOINT) {
+    document.getElementById('form-notice').classList.add('show');
+    return;
+  }
+
+  const payload = {
+    service:     document.getElementById('f-service').value,
+    origin:      document.getElementById('f-origin').value,
+    destination: document.getElementById('f-dest').value,
+    timing:      document.getElementById('f-timing').value,
+    cargo:       document.getElementById('f-cargo').value,
+    weight:      document.getElementById('f-weight').value,
+    hazmat:      document.getElementById('f-hazmat').value,
+    notes:       document.getElementById('f-notes').value,
+    name:        document.getElementById('f-name').value,
+    company:     document.getElementById('f-company').value,
+    email:       document.getElementById('f-email').value,
+    phone:       document.getElementById('f-phone').value,
+  };
+
+  fetch(QUOTE_FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+  .then(r => { if (r.ok) showSuccess(); })
+  .catch(() => { /* network error; surface to user if needed */ });
+});
+
+function showSuccess() {
+  document.getElementById('quoteForm').style.display = 'none';
+  document.querySelector('.step-indicator').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+}
+
+/* ============================================================
+   HERO SLIDESHOW, Ken Burns + auto-advance every 5s
+   ============================================================ */
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  let current  = 0;
+  let timer;
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    const slide = slides[current];
+    slide.style.animation = 'none';
+    void slide.offsetWidth; // force reflow to restart kenburns
+    slide.style.animation  = '';
+    slide.classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); startTimer(); });
+  });
+
+  startTimer();
+})();
+
+/* ============================================================
+   SOLUTIONS ACCORDION
+   Desktop: hover to preview, click to pin. Track mouseleave
+   restores the pinned card.
+   Mobile: tap to toggle, only one open at a time.
+   ============================================================ */
+(function() {
+  const track = document.querySelector('.acc-track');
+  const cards = Array.from(document.querySelectorAll('.acc-card'));
+  if (!track || !cards.length) return;
+
+  let pinned = cards[0];
+
+  function activate(card) {
+    cards.forEach(c => {
+      const on = c === card;
+      c.classList.toggle('active', on);
+      c.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 900) activate(card);
+    });
+
+    card.addEventListener('click', () => {
+      if (window.innerWidth > 900) {
+        pinned = card;
+        activate(card);
+      } else {
+        const wasActive = card.classList.contains('active');
+        activate(wasActive ? null : card);
+        if (!wasActive) pinned = card;
+      }
+    });
+
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        if (window.innerWidth > 900) {
+          pinned = card;
+          activate(card);
+        } else {
+          const wasActive = card.classList.contains('active');
+          activate(wasActive ? null : card);
+          if (!wasActive) pinned = card;
+        }
+      }
+    });
+  });
+
+  track.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 900) activate(pinned);
+  });
+})();
+
+/* ============================================================
+   BILINGUAL, identical approach to index.html
+   localStorage key: 'esv-lang'  (same key as main site)
+   ============================================================ */
+const _T = {
+  /* Nav */
+  'nav_inicio':     ['Inicio', 'Home'],
+  'nav_sol':        ['Soluciones', 'Solutions'],
+  'nav_proc':       ['Proceso', 'How It Works'],
+  'nav_quot':       ['Cotizar', 'Get a Quote'],
+  'nav_cont':       ['Contacto', 'Contact'],
+  /* Hero */
+  'hero_badge':     ['División de Transporte', 'Transportation Division'],
+  'hero_h1_pre':    ['Un solo equipo responsable para ', 'One accountable team for '],
+  'hero_h1_em':     ['carga compleja', 'complex cargo'],
+  'hero_p':         ['Movemos su carga de principio a fin. Empoderar coordina transporte, documentación, aduanas, protección de carga y resolución de imprevistos para que usted tenga un solo equipo responsable.', 'We move your cargo from start to finish. Empoderar coordinates transport, documentation, customs, cargo protection, and problem resolution, giving you one accountable team.'],
+  'hero_cta1':      ['Solicitar cotización', 'Request a quote'],
+  'hero_cta2':      ['Hablar con logística →', 'Speak with logistics →'],
+  'pill1':          ['Transporte', 'Transport'],
+  'pill2':          ['Documentación', 'Documentation'],
+  'pill3':          ['Aduanas', 'Customs'],
+  'pill4':          ['Protección de carga', 'Cargo protection'],
+  'pill5':          ['Resolución de imprevistos', 'Problem resolution'],
+  /* Needs selector */
+  'needs_q':        ['¿Cuál es su necesidad logística?', 'What is your logistics need?'],
+  'need_urgent':    ['Carga urgente', 'Urgent cargo'],
+  'need_air':       ['Transporte aéreo', 'Air freight'],
+  'need_ground':    ['Transporte terrestre', 'Ground transport'],
+  'need_ocean':     ['Transporte marítimo', 'Ocean freight'],
+  'need_special':   ['Operación especializada', 'Specialized operation'],
+  /* Solutions */
+  'sol_label':      ['Soluciones', 'Solutions'],
+  'sol_h2_pre':     ['Más que transporte: ', 'More than transport: '],
+  'sol_h2_em':      ['una solución completa', 'a complete solution'],
+  'sol_sub':        ['Coordinamos el modo de transporte adecuado, los socios correctos, la documentación, las aduanas y la protección de carga, todo desde un solo punto de contacto.', 'We coordinate the right transport mode, the right partners, documentation, customs, and cargo protection, all from a single point of contact.'],
+  'tag_air':        ['Aéreo', 'Air'],
+  'sol_air_h':      ['Transporte Aéreo', 'Air Freight'],
+  'sol_air_p':      ['Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.', 'General and urgent cargo where speed and reliability are the priority. We coordinate with the right operators based on origin, destination, and cargo type.'],
+  'sol_air_cta':    ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_air_mob':    ['Transporte Aéreo', 'Air Freight'],
+  'pill_air':       ['Aéreo', 'Air'],
+  'tag_ground':     ['Terrestre', 'Ground'],
+  'sol_ground_h':   ['Transporte Terrestre', 'Ground Transport'],
+  'sol_ground_p':   ['Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.', 'Domestic, cross-border, full-load, and consolidated movement coordinated through the right partners. From El Salvador across Central America and beyond.'],
+  'sol_ground_cta': ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_ground_mob': ['Transporte Terrestre', 'Ground Transport'],
+  'pill_ground':    ['Terrestre', 'Ground'],
+  'tag_ocean':      ['Marítimo', 'Ocean'],
+  'sol_ocean_h':    ['Transporte Marítimo', 'Ocean Freight'],
+  'sol_ocean_p':    ['Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.', 'Planned, cost-efficient cargo movement through maritime logistics partners. Ideal for import and export volumes that benefit from economies of scale.'],
+  'sol_ocean_cta':  ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_ocean_mob':  ['Transporte Marítimo', 'Ocean Freight'],
+  'pill_ocean':     ['Marítimo', 'Ocean'],
+  'tag_urgent':     ['Urgente', 'Urgent'],
+  'sol_urgent_h':   ['Carga Urgente y Emergencias', 'Urgent Cargo & Emergencies'],
+  'sol_urgent_p':   ['Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.', 'For production-stopping situations, industrial, automotive, or time-critical operations. We assess the best available solution and act with urgency.'],
+  'sol_urgent_cta': ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_urgent_mob': ['Carga Urgente', 'Urgent Cargo'],
+  'pill_urgent':    ['Urgente', 'Urgent'],
+  /* Process */
+  'proc_label':     ['Cómo funciona', 'How It Works'],
+  'proc_h2_pre':    ['Así trabajamos ', 'How we work '],
+  'proc_h2_em':     ['con usted', 'with you'],
+  'step1_h':        ['Entendemos su carga', 'We understand your cargo'],
+  'step1_p':        ['Analizamos el tipo de carga, urgencia, origen, destino, documentación requerida y riesgos operativos. Sin conocer el detalle, no podemos diseñar la solución correcta.', 'We analyze cargo type, urgency, origin, destination, required documentation, and operational risks. Without knowing the details, we cannot design the right solution.'],
+  'step2_h':        ['Diseñamos y coordinamos', 'We design and coordinate'],
+  'step2_p':        ['Seleccionamos y coordinamos el modo de transporte adecuado, los socios, la documentación, las aduanas y la protección de carga. Una solución cohesiva, no piezas sueltas.', 'We select and coordinate the appropriate transport mode, partners, documentation, customs, and cargo protection. A cohesive solution, not disconnected pieces.'],
+  'step3_h':        ['Acompañamos hasta la resolución', 'We stay until resolution'],
+  'step3_p':        ['Mantenemos al cliente informado y ayudamos a resolver problemas si el envío cambia, se retrasa o requiere intervención. No desaparecemos una vez contratado el servicio.', 'We keep the client informed and help resolve problems if the shipment changes, is delayed, or requires intervention. We do not disappear once the service is contracted.'],
+  'proc_quote':     ['"Un equipo. Un punto de contacto. Una solución coordinada."', '"One team. One point of contact. One coordinated solution."'],
+  'proc_cite':      ['Empoderar División de Transporte', 'Empoderar Transportation Division'],
+  /* Trust */
+  'trust_label':    ['Por qué Empoderar', 'Why Empoderar'],
+  'trust_h2':       ['Coordinación integral, no solo transporte', 'Full coordination, not just transport'],
+  'trust1_h':       ['Coordinación integral', 'End-to-end coordination'],
+  'trust1_p':       ['Integramos todos los elementos del movimiento de carga en un proceso cohesivo. Usted no coordina múltiples proveedores, nosotros lo hacemos.', 'We integrate all elements of cargo movement into a cohesive process. You do not coordinate multiple vendors, we do that for you.'],
+  'trust2_h':       ['Documentación y aduanas', 'Documentation & customs'],
+  'trust2_p':       ['Gestión de documentación de exportación, importación y trámites aduaneros. Reducimos los errores que generan retrasos y costos adicionales.', 'Management of export, import, and customs documentation. We reduce errors that generate delays and additional costs.'],
+  'trust3_h':       ['Protección de carga', 'Cargo protection'],
+  'trust3_p':       ['Apoyo para la evaluación y gestión de protección de carga y seguros según el tipo y valor del embarque. No asumimos riesgos innecesarios con su carga.', 'Support for evaluating and managing cargo protection and insurance based on the shipment type and value. We do not take unnecessary risks with your cargo.'],
+  'trust4_h':       ['Red de socios logísticos', 'Logistics partner network'],
+  'trust4_p':       ['Trabajamos con operadores y socios logísticos seleccionados por confiabilidad y trayectoria, no solo por precio.', 'We work with logistics operators and partners selected for reliability and track record, not just price.'],
+  'trust5_h':       ['Comunicación clara', 'Clear communication'],
+  'trust5_p':       ['Mantenemos al cliente informado durante todo el proceso. Usted sabe qué pasa con su carga sin necesitar perseguir información.', 'We keep the client informed throughout the process. You know what is happening with your cargo without having to chase information.'],
+  'trust6_h':       ['Respuesta ante imprevistos', 'Response to unexpected events'],
+  'trust6_p':       ['Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.', 'When something changes, and in logistics something always can, we respond with concrete options and solutions, not apologies.'],
+  /* Quote form */
+  'quot_label':     ['Cotización', 'Quote'],
+  'quot_h2':        ['Cuéntenos sobre su carga', 'Tell us about your cargo'],
+  'quot_p':         ['Respondemos cada solicitud con atención personalizada. Comparta los detalles de su necesidad logística y un especialista se comunicará con usted.', 'We respond to every request with personalized attention. Share your logistics need and a specialist will contact you.'],
+  'quot_exp_h':     ['¿Qué esperar?', 'What to expect'],
+  'quot_exp_p':     ['Revisaremos su solicitud y un especialista de logística se comunicará con usted para diseñar una solución adecuada. No compartimos su información con terceros.', 'We will review your request and a logistics specialist will contact you to design an appropriate solution. We do not share your information with third parties.'],
+  'lbl_service':    ['Necesidad logística *', 'Logistics need *'],
+  'f_svc_def':      ['Seleccione', 'Select'],
+  'f_svc_urg':      ['Carga urgente', 'Urgent cargo'],
+  'f_svc_air':      ['Transporte aéreo', 'Air freight'],
+  'f_svc_gnd':      ['Transporte terrestre', 'Ground transport'],
+  'f_svc_sea':      ['Transporte marítimo', 'Ocean freight'],
+  'f_svc_spc':      ['Operación especializada', 'Specialized operation'],
+  'f_svc_ns':       ['No estoy seguro', 'Not sure'],
+  'lbl_origin':     ['Origen *', 'Origin *'],
+  'lbl_dest':       ['Destino *', 'Destination *'],
+  'lbl_timing':     ['Urgencia o fecha estimada', 'Urgency or estimated date'],
+  'btn_next1':      ['Siguiente →', 'Next →'],
+  'lbl_cargo':      ['Tipo de mercancía *', 'Type of merchandise *'],
+  'lbl_weight':     ['Peso estimado', 'Estimated weight'],
+  'lbl_hazmat':     ['Mercancías peligrosas', 'Dangerous goods'],
+  'f_haz_no':       ['No', 'No'],
+  'f_haz_yes':      ['Sí', 'Yes'],
+  'f_haz_ns':       ['No estoy seguro', 'Not sure'],
+  'lbl_notes':      ['Detalles adicionales (opcional)', 'Additional details (optional)'],
+  'btn_back2':      ['← Atrás', '← Back'],
+  'btn_next2':      ['Siguiente →', 'Next →'],
+  'lbl_name':       ['Nombre *', 'Name *'],
+  'lbl_company':    ['Empresa', 'Company'],
+  'lbl_email':      ['Correo electrónico *', 'Email *'],
+  'lbl_phone':      ['Teléfono', 'Phone'],
+  'lbl_consent':    ['Acepto que Empoderar se comunique conmigo para atender esta solicitud. No compartiremos su información con terceros.', 'I agree that Empoderar may contact me to handle this request. We will not share your information with third parties.'],
+  'notice_h':       ['Configuración pendiente', 'Configuration required'],
+  'notice_p':       ['Este formulario requiere un endpoint de correo o CRM configurado antes del lanzamiento en producción. Por ahora, utilice los datos de contacto directos indicados en esta página.', 'This form requires an email or CRM endpoint configured before the production launch. For now, please use the direct contact details shown on this page.'],
+  'btn_back3':      ['← Atrás', '← Back'],
+  'btn_submit':     ['Enviar solicitud →', 'Send request →'],
+  'success_h':      ['Solicitud recibida', 'Request received'],
+  'success_p':      ['Revisaremos su solicitud y un especialista de logística se comunicará con usted pronto.', 'We will review your request and a logistics specialist will contact you soon.'],
+  /* Contact */
+  'cont_label':     ['Contacto', 'Contact'],
+  'cont_h2':        ['Hablemos de su operación', "Let's discuss your operation"],
+  'cont_p':         ['Para carga urgente, compleja o que requiere conversación directa, nuestro equipo de logística está disponible.', 'For urgent, complex cargo or situations requiring a direct conversation, our logistics team is available.'],
+  'cont_lbl_email': ['Correo', 'Email'],
+  'cont_lbl_phone': ['Teléfono', 'Phone'],
+  'cont_box_h':     ['¿Necesita mover carga ahora?', 'Need to move cargo now?'],
+  'cont_box_p':     ['Carga urgente, inusual o con requerimientos especiales. Contáctenos directamente y un especialista evaluará su necesidad sin demora.', 'Urgent, unusual, or special-requirement cargo. Contact us directly and a specialist will assess your need without delay.'],
+  'cont_box_btn':   ['Escribir a logística', 'Contact logistics'],
+  'tracking_note':  ['Seguimiento de envíos para clientes, próximamente.', 'Shipment tracking for clients, coming soon.'],
+  /* Footer */
+  'footer_tag':     ['División de Transporte, Un equipo. Un punto de contacto.', 'Transportation Division, One team. One point of contact.'],
+  'f_inicio':       ['Inicio', 'Home'],
+  'f_sol':          ['Soluciones', 'Solutions'],
+  'f_proc':         ['Proceso', 'How It Works'],
+  'f_quot':         ['Cotizar', 'Get a Quote'],
+  'f_cont':         ['Contacto', 'Contact'],
+  'f_main':         ['← EmpoderarSV', '← EmpoderarSV'],
+  'footer_copy':    ['© 2026 EmpoderarSV. Todos los derechos reservados.', '© 2026 EmpoderarSV. All rights reserved.'],
+};
+
+function setLang(lang) {
+  const idx = lang === 'en' ? 1 : 0;
+  document.documentElement.lang = lang;
+  localStorage.setItem('esv-lang', lang);
+  document.getElementById('btnES').classList.toggle('active', lang === 'es');
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  for (const [key, vals] of Object.entries(_T)) {
+    const el = document.getElementById('t-' + key);
+    if (el) el.innerHTML = vals[idx];
+  }
+  document.querySelectorAll('[data-ph-es]').forEach(el => {
+    el.placeholder = lang === 'en' ? el.getAttribute('data-ph-en') : el.getAttribute('data-ph-es');
+  });
+}
+
+/* Init, reads the same localStorage key used by the main site */
+(function () {
+  const saved = localStorage.getItem('esv-lang') || 'es';
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
