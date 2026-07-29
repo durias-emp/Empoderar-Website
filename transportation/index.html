@@ -390,14 +390,13 @@ section { padding: 100px 48px; }
 }
 .process-step h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--brown-dark); margin-bottom: 12px; }
 .process-step p { font-size: 15px; color: var(--brown-light); line-height: 1.7; }
-.proc-closer { max-width: 1100px; margin: 48px auto 0; background: var(--brown-dark); border-radius: 20px; padding: 40px 48px; text-align: center; color: var(--cream-light); }
+.proc-closer { max-width: 1100px; margin: 48px auto 0; background: var(--brown-dark); border-radius: 20px; padding: 28px 40px; text-align: center; color: var(--cream-light); }
 .proc-closer p { font-family: var(--serif); font-size: clamp(18px, 2vw, 26px); font-style: italic; line-height: 1.45; color: var(--cream-light); }
-.proc-closer cite { font-size: 13px; color: var(--brown-muted); font-style: normal; display: block; margin-top: 10px; }
+
 
 /* ============================================================
    TRUST / WHY EMPODERAR
    ============================================================ */
-#porque { background: var(--cream); padding: 100px 48px; }
 .trust-header { text-align: center; margin-bottom: 56px; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
 .trust-card { background: var(--white); border: 1px solid rgba(140,122,101,0.12); border-radius: 20px; padding: 32px; transition: transform 0.2s; }
@@ -560,7 +559,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
   .proc-closer { padding: 28px 24px; }
 
   /* Trust */
-  #porque { padding: 56px 16px; }
+
   .trust-grid { grid-template-columns: 1fr; }
 
   /* Quote */
@@ -796,20 +795,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
   <div class="proc-closer reveal">
     <p id="t-proc_quote">"Un equipo. Un punto de contacto. Una solución coordinada."</p>
-    <cite id="t-proc_cite">Empoderar División de Transporte</cite>
   </div>
-</section>
 
-<!-- ============================================================
-     WHY EMPODERAR
-     ============================================================ -->
-<section id="porque" aria-labelledby="trust-heading">
-  <div class="trust-header reveal">
+  <div class="trust-header reveal" style="margin-top:72px;">
     <span class="section-label" id="t-trust_label">Por qué Empoderar</span>
     <h2 class="section-title" id="trust-heading"><em><span id="t-trust_h2">Coordinación integral, no solo transporte</span></em></h2>
   </div>
 
-  <div class="trust-grid reveal">
+  <div id="porque" class="trust-grid reveal">
     <div class="trust-card">
       <div class="trust-icon" aria-hidden="true">CO</div>
       <h3 id="t-trust1_h">Coordinación integral</h3>
@@ -1110,8 +1103,8 @@ reveals.forEach(el => revealObserver.observe(el));
       if (e.isIntersecting && !fired) {
         fired = true;
         stepNums[0].classList.add('lit');
-        setTimeout(function() { stepNums[1] && stepNums[1].classList.add('lit'); }, 10000);
-        setTimeout(function() { stepNums[2] && stepNums[2].classList.add('lit'); }, 20000);
+        setTimeout(function() { stepNums[1] && stepNums[1].classList.add('lit'); }, 5000);
+        setTimeout(function() { stepNums[2] && stepNums[2].classList.add('lit'); }, 10000);
         obs.disconnect();
       }
     });
