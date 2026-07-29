@@ -7,7 +7,8 @@
 <title>División de Transporte</title>
 <link rel="icon" type="image/png" href="../favicon empoderar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    EMPODERAR TRANSPORTATION, DESIGN SYSTEM
@@ -26,7 +27,7 @@
   --white: #FDFAF5;
   --bitcoin: #F7931A;
   --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'DM Sans', sans-serif;
+  --sans: 'Montserrat', sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -367,7 +368,7 @@ section { padding: 100px 48px; }
 .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
 .trust-card { background: var(--white); border: 1px solid rgba(140,122,101,0.12); border-radius: 20px; padding: 32px; transition: transform 0.2s; }
 .trust-card:hover { transform: translateY(-4px); }
-.trust-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
+.trust-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: var(--brown-mid); font-family: var(--sans); margin-bottom: 20px; }
 .trust-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--brown-dark); margin-bottom: 10px; }
 .trust-card p { font-size: 14px; color: var(--brown-light); line-height: 1.65; }
 
@@ -648,16 +649,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              style="background-image:url('chris-leipelt-pRQCTeQTDwE-unsplash.jpg'); background-position: center 32%;">
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
-        <span class="acc-pill-icon">✈</span>
         <span class="acc-pill-text" id="t-pill_air">Aéreo</span>
       </div>
       <div class="acc-mob-header" aria-hidden="true">
-        <span class="acc-mob-icon">✈</span>
         <span class="acc-mob-title" id="t-sol_air_mob">Transporte Aéreo</span>
         <span class="acc-mob-chevron">▼</span>
       </div>
       <div class="acc-body">
-        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">✈</span><span id="t-tag_air">Aéreo</span></span>
+        <span class="acc-tag"><span id="t-tag_air">Aéreo</span></span>
         <h3 class="acc-title" id="t-sol_air_h">Transporte Aéreo</h3>
         <p class="acc-desc" id="t-sol_air_p">Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.</p>
         <a href="#cotizar" class="acc-cta" id="t-sol_air_cta">Cotizar este servicio →</a>
@@ -673,16 +672,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: center 50%;">
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
-        <span class="acc-pill-icon">🚛</span>
         <span class="acc-pill-text" id="t-pill_ground">Terrestre</span>
       </div>
       <div class="acc-mob-header" aria-hidden="true">
-        <span class="acc-mob-icon">🚛</span>
         <span class="acc-mob-title" id="t-sol_ground_mob">Transporte Terrestre</span>
         <span class="acc-mob-chevron">▼</span>
       </div>
       <div class="acc-body">
-        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">🚛</span><span id="t-tag_ground">Terrestre</span></span>
+        <span class="acc-tag"><span id="t-tag_ground">Terrestre</span></span>
         <h3 class="acc-title" id="t-sol_ground_h">Transporte Terrestre</h3>
         <p class="acc-desc" id="t-sol_ground_p">Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.</p>
         <a href="#cotizar" class="acc-cta" id="t-sol_ground_cta">Cotizar este servicio →</a>
@@ -698,16 +695,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: center 42%;">
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
-        <span class="acc-pill-icon">🚢</span>
         <span class="acc-pill-text" id="t-pill_ocean">Marítimo</span>
       </div>
       <div class="acc-mob-header" aria-hidden="true">
-        <span class="acc-mob-icon">🚢</span>
         <span class="acc-mob-title" id="t-sol_ocean_mob">Transporte Marítimo</span>
         <span class="acc-mob-chevron">▼</span>
       </div>
       <div class="acc-body">
-        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">🚢</span><span id="t-tag_ocean">Marítimo</span></span>
+        <span class="acc-tag"><span id="t-tag_ocean">Marítimo</span></span>
         <h3 class="acc-title" id="t-sol_ocean_h">Transporte Marítimo</h3>
         <p class="acc-desc" id="t-sol_ocean_p">Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.</p>
         <a href="#cotizar" class="acc-cta" id="t-sol_ocean_cta">Cotizar este servicio →</a>
@@ -723,16 +718,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 62% 60%;">
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
-        <span class="acc-pill-icon">⚡</span>
         <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
       </div>
       <div class="acc-mob-header" aria-hidden="true">
-        <span class="acc-mob-icon">⚡</span>
         <span class="acc-mob-title" id="t-sol_urgent_mob">Carga Urgente</span>
         <span class="acc-mob-chevron">▼</span>
       </div>
       <div class="acc-body">
-        <span class="acc-tag"><span class="acc-icon-sm" aria-hidden="true">⚡</span><span id="t-tag_urgent">Urgente</span></span>
+        <span class="acc-tag"><span id="t-tag_urgent">Urgente</span></span>
         <h3 class="acc-title" id="t-sol_urgent_h">Carga Urgente y Emergencias</h3>
         <p class="acc-desc" id="t-sol_urgent_p">Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.</p>
         <a href="#cotizar" class="acc-cta" id="t-sol_urgent_cta">Cotizar este servicio →</a>
@@ -788,32 +781,32 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
   <div class="trust-grid reveal">
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">🗂️</div>
+      <div class="trust-icon" aria-hidden="true">CO</div>
       <h3 id="t-trust1_h">Coordinación integral</h3>
       <p id="t-trust1_p">Integramos todos los elementos del movimiento de carga en un proceso cohesivo. Usted no coordina múltiples proveedores, nosotros lo hacemos.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">📄</div>
+      <div class="trust-icon" aria-hidden="true">DC</div>
       <h3 id="t-trust2_h">Documentación y aduanas</h3>
       <p id="t-trust2_p">Gestión de documentación de exportación, importación y trámites aduaneros. Reducimos los errores que generan retrasos y costos adicionales.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">🛡️</div>
+      <div class="trust-icon" aria-hidden="true">PC</div>
       <h3 id="t-trust3_h">Protección de carga</h3>
       <p id="t-trust3_p">Apoyo para la evaluación y gestión de protección de carga y seguros según el tipo y valor del embarque. No asumimos riesgos innecesarios con su carga.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">🤝</div>
+      <div class="trust-icon" aria-hidden="true">RS</div>
       <h3 id="t-trust4_h">Red de socios logísticos</h3>
       <p id="t-trust4_p">Trabajamos con operadores y socios logísticos seleccionados por confiabilidad y trayectoria, no solo por precio.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">💬</div>
+      <div class="trust-icon" aria-hidden="true">CM</div>
       <h3 id="t-trust5_h">Comunicación clara</h3>
       <p id="t-trust5_p">Mantenemos al cliente informado durante todo el proceso. Usted sabe qué pasa con su carga sin necesitar perseguir información.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">🔧</div>
+      <div class="trust-icon" aria-hidden="true">RI</div>
       <h3 id="t-trust6_h">Respuesta ante imprevistos</h3>
       <p id="t-trust6_p">Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.</p>
     </div>
@@ -837,8 +830,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
         <span id="t-quot_exp_p">Revisaremos su solicitud y un especialista de logística se comunicará con usted para diseñar una solución adecuada. No compartimos su información con terceros.</span>
       </div>
       <div class="quote-contacts">
-        <a href="mailto:hola@empoderarsv.com" aria-label="Correo electrónico">📧 hola@empoderarsv.com</a>
-        <a href="tel:+50370079036" aria-label="Teléfono">📞 +503 7007 9036</a>
+        <a href="mailto:hola@empoderarsv.com" aria-label="Correo electrónico">hola@empoderarsv.com</a>
+        <a href="tel:+50370079036" aria-label="Teléfono">+503 7007 9036</a>
       </div>
     </div>
 
@@ -952,7 +945,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
           </div>
           <!-- Shown only if QUOTE_FORM_ENDPOINT is not configured -->
           <div class="form-notice" id="form-notice">
-            <strong>⚠️ <span id="t-notice_h">Configuración pendiente</span></strong><br>
+            <strong><span id="t-notice_h">Configuración pendiente</span></strong><br>
             <span id="t-notice_p">Este formulario requiere un endpoint de correo o CRM configurado antes del lanzamiento en producción. Por ahora, utilice los datos de contacto directos indicados en esta página.</span>
           </div>
           <div class="form-actions">
@@ -963,7 +956,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
         <!-- SUCCESS STATE -->
         <div class="form-success" id="formSuccess">
-          <div class="check-circle" aria-hidden="true">✓</div>
+          <div class="check-circle" aria-hidden="true"></div>
           <h3 id="t-success_h">Solicitud recibida</h3>
           <p id="t-success_p">Revisaremos su solicitud y un especialista de logística se comunicará con usted pronto.</p>
         </div>
@@ -985,14 +978,14 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       <p id="t-cont_p">Para carga urgente, compleja o que requiere conversación directa, nuestro equipo de logística está disponible.</p>
       <div class="contact-detail">
         <div class="contact-item">
-          <div class="contact-item-icon" aria-hidden="true">📧</div>
+          <div class="contact-item-icon" aria-hidden="true"></div>
           <div class="contact-item-text">
             <h4 id="t-cont_lbl_email">Correo</h4>
             <a href="mailto:hola@empoderarsv.com">hola@empoderarsv.com</a>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-item-icon" aria-hidden="true">📞</div>
+          <div class="contact-item-icon" aria-hidden="true"></div>
           <div class="contact-item-text">
             <h4 id="t-cont_lbl_phone">Teléfono</h4>
             <a href="tel:+50370079036">+503 7007 9036</a>
