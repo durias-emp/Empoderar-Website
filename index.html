@@ -22,21 +22,22 @@
   .site-logo img { height: 32px; }
   .lang-toggle button { font-size: 12px; padding: 6px 12px; }
 
-  /* Nav: move to bottom of screen like a mobile tab bar */
+  /* Nav: centered pill, scrollable if links don't fit */
   nav {
     position: sticky !important;
     top: 10px !important;
-    left: 0 !important;
+    left: auto !important;
     transform: none !important;
-    width: calc(100% - 32px);
-    max-width: 100%;
+    width: fit-content;
+    max-width: calc(100% - 32px);
     margin: 10px auto 0;
     padding: 4px;
-    justify-content: center;
+    overflow: hidden;
     z-index: 100;
   }
-  .nav-links { gap: 0; justify-content: center; width: 100%; }
-  .nav-links a { font-size: 12px; padding: 9px 12px; white-space: nowrap; }
+  .nav-links { gap: 0; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 12px; padding: 9px 11px; white-space: nowrap; }
 
   /* Hero: tight, no extra top gap */
   .hero { padding: 24px 20px 40px; text-align: center; }
