@@ -371,8 +371,24 @@ section { padding: 100px 48px; }
 .proc-header { text-align: center; margin-bottom: 56px; }
 .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1100px; margin: 0 auto; }
 .process-step { }
-.step-num { font-family: var(--serif); font-size: 52px; font-weight: 500; color: rgba(44,31,20,0.07); line-height: 1; margin-bottom: 20px; }
-.process-step h3 { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--brown-dark); margin-bottom: 12px; }
+.step-num {
+  font-family: var(--serif); font-size: 52px; font-weight: 700;
+  color: rgba(44,31,20,0.07); line-height: 1; margin-bottom: 20px;
+  transition: color 0.6s ease;
+}
+.step-num.lit {
+  animation: numOn 1.1s ease forwards;
+}
+@keyframes numOn {
+  0%   { color: rgba(44,31,20,0.07); }
+  18%  { color: var(--brown-dark); }
+  55%  { color: var(--brown-mid); }
+  100% { color: var(--brown-mid); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step-num.lit { animation: none; color: var(--brown-mid); }
+}
+.process-step h3 { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--brown-dark); margin-bottom: 12px; }
 .process-step p { font-size: 15px; color: var(--brown-light); line-height: 1.7; }
 .proc-closer { max-width: 1100px; margin: 48px auto 0; background: var(--brown-dark); border-radius: 20px; padding: 40px 48px; text-align: center; color: var(--cream-light); }
 .proc-closer p { font-family: var(--serif); font-size: clamp(18px, 2vw, 26px); font-style: italic; line-height: 1.45; color: var(--cream-light); }
@@ -1079,6 +1095,29 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 reveals.forEach(el => revealObserver.observe(el));
+
+/* ============================================================
+   PROCESS STEP NUMBER SEQUENTIAL ANIMATION
+   01 lights up on scroll-in, 02 after 10s, 03 after 20s
+   ============================================================ */
+(function() {
+  const stepNums = document.querySelectorAll('.step-num');
+  const proc = document.getElementById('proceso');
+  if (!proc || !stepNums.length) return;
+  let fired = false;
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        stepNums[0].classList.add('lit');
+        setTimeout(function() { stepNums[1] && stepNums[1].classList.add('lit'); }, 10000);
+        setTimeout(function() { stepNums[2] && stepNums[2].classList.add('lit'); }, 20000);
+        obs.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(proc);
+})();
 
 /* ============================================================
    QUICK NEEDS SELECTOR
