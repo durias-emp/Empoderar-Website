@@ -438,6 +438,16 @@ section { padding: 100px 48px; }
 }
 .trust-card:hover .trust-icon { transform: scale(1.08) rotate(-5deg); background: var(--brown-dark); color: var(--cream-light); }
 
+/* Icon glyphs are masked PNGs, so they take theme colors and invert on hover */
+.ti-glyph {
+  display: block; width: 24px; height: 24px;
+  background-color: var(--brown-mid);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+  transition: background-color 0.3s ease;
+}
+.trust-card:hover .ti-glyph { background-color: var(--cream-light); }
+
 .trust-card h3 { font-family: var(--serif); font-size: 19px; font-weight: 700; color: var(--brown-dark); margin-bottom: 10px; }
 .trust-card p { font-size: 14px; color: var(--brown-light); line-height: 1.65; }
 
@@ -453,7 +463,7 @@ section { padding: 100px 48px; }
 .trust-card:nth-child(6) p { max-width: 720px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .trust-card, .trust-icon { transition: none; }
+  .trust-card, .trust-icon, .ti-glyph { transition: none; }
   .trust-card:hover { transform: none; }
   .trust-card:hover .trust-icon { transform: none; }
   .trust-card::before { display: none; }
@@ -858,22 +868,22 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
   <div id="porque" class="trust-grid reveal">
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">CO</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('direction.png')"></span></div>
       <h3 id="t-trust1_h">Coordinación integral</h3>
       <p id="t-trust1_p">Integramos todos los elementos del movimiento de carga en un proceso cohesivo. Usted no coordina múltiples proveedores, nosotros lo hacemos.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">DC</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('document-file.png')"></span></div>
       <h3 id="t-trust2_h">Documentación y aduanas</h3>
       <p id="t-trust2_p">Gestión de documentación de exportación, importación y trámites aduaneros. Reducimos los errores que generan retrasos y costos adicionales.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">PC</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('security.png')"></span></div>
       <h3 id="t-trust3_h">Protección de carga</h3>
       <p id="t-trust3_p">Apoyo para la evaluación y gestión de protección de carga y seguros según el tipo y valor del embarque. No asumimos riesgos innecesarios con su carga.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">RS</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('handshake.png')"></span></div>
       <h3 id="t-trust4_h">Red de socios logísticos</h3>
       <p id="t-trust4_p">Trabajamos con operadores y socios logísticos seleccionados por confiabilidad y trayectoria, no solo por precio.</p>
     </div>
@@ -883,7 +893,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       <p id="t-trust5_p">Mantenemos al cliente informado durante todo el proceso. Usted sabe qué pasa con su carga sin necesitar perseguir información.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">RI</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('lifebuoy.png')"></span></div>
       <div class="trust-text">
         <h3 id="t-trust6_h">Respuesta ante imprevistos</h3>
         <p id="t-trust6_p">Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.</p>
