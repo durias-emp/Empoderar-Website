@@ -51,43 +51,57 @@ body { background: var(--cream); color: var(--brown-dark); font-family: var(--sa
 
 /* --- MOBILE HEADER CONTROLS (hidden on desktop) --- */
 .top-bar-right { display: flex; align-items: center; gap: 10px; pointer-events: auto; }
-.lang-flag, .nav-burger { display: none; }
 
-.lang-flag {
-  align-items: center; justify-content: center;
-  width: 40px; height: 40px; padding: 0;
+/* Same glass capsule as the desktop ESP/ENG pill */
+.mobile-controls {
+  display: none; align-items: center; gap: 2px; padding: 4px;
   background: rgba(236,230,220,0.72);
   -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.55); border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.55); border-radius: 50px;
   box-shadow: 0 2px 16px rgba(44,31,20,0.07);
-  cursor: pointer; overflow: hidden;
 }
-.lang-flag .flag { display: none; line-height: 0; border-radius: 3px; overflow: hidden; }
+.mc-divider { width: 1px; height: 18px; background: rgba(92,74,53,0.18); margin: 0 2px; }
+
+.lang-flag {
+  display: flex; align-items: center; justify-content: center;
+  padding: 7px 12px; border: none; background: transparent;
+  border-radius: 50px; cursor: pointer;
+  transition: background 0.18s;
+}
+.lang-flag:active { background: rgba(255,255,255,0.6); }
+.lang-flag .flag {
+  display: none; line-height: 0; border-radius: 2px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(44,31,20,0.18);
+}
 .lang-flag .flag svg { display: block; }
 html[lang="es"] .lang-flag .flag-sv { display: block; }
 html[lang="en"] .lang-flag .flag-us { display: block; }
 
 .nav-burger {
-  position: relative;
-  width: 40px; height: 40px; padding: 0;
-  background: rgba(236,230,220,0.72);
-  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.55); border-radius: 50%;
-  box-shadow: 0 2px 16px rgba(44,31,20,0.07);
-  cursor: pointer;
+  position: relative; width: 34px; height: 32px; padding: 0;
+  background: transparent; border: none; border-radius: 50px;
+  cursor: pointer; transition: background 0.18s;
 }
+.nav-burger:active { background: rgba(255,255,255,0.6); }
 .burger-bar {
-  position: absolute; left: 50%; width: 16px; height: 1.5px;
-  margin-left: -8px; border-radius: 2px; background: var(--brown-dark);
+  position: absolute; left: 50%; width: 15px; height: 1.5px;
+  margin-left: -7.5px; border-radius: 2px; background: var(--brown-dark);
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1), opacity 0.18s linear, top 0.28s cubic-bezier(0.4,0,0.2,1);
 }
-.burger-bar:nth-child(1) { top: 14px; }
-.burger-bar:nth-child(2) { top: 19px; }
-.burger-bar:nth-child(3) { top: 24px; }
+.burger-bar:nth-child(1) { top: 10px; }
+.burger-bar:nth-child(2) { top: 15px; }
+.burger-bar:nth-child(3) { top: 20px; }
 /* Collapse to a centred X */
-.nav-burger.open .burger-bar:nth-child(1) { top: 19px; transform: rotate(45deg); }
+.nav-burger.open .burger-bar:nth-child(1) { top: 15px; transform: rotate(45deg); }
 .nav-burger.open .burger-bar:nth-child(2) { opacity: 0; }
-.nav-burger.open .burger-bar:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+.nav-burger.open .burger-bar:nth-child(3) { top: 15px; transform: rotate(-45deg); }
+
+/* Logo inverts to dark once the header passes off the dark hero */
+.site-logo img { transition: filter 0.3s ease; }
+body.header-on-light .site-logo img {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(15%) saturate(600%) hue-rotate(5deg) brightness(0.4);
+  opacity: 0.85;
+}
 
 /* --- MOBILE MENU OVERLAY --- */
 .mobile-menu {
@@ -650,7 +664,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
   /* Desktop pill nav and ESP/ENG toggle give way to the burger */
   #navbar { display: none !important; }
   .lang-toggle { display: none; }
-  .lang-flag, .nav-burger { display: flex; }
+  .mobile-controls { display: flex; }
 
   /* Hero */
   #inicio { margin: 0; border-radius: 0; padding: 120px 20px 56px; min-height: 100dvh; }
@@ -753,37 +767,57 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       <button id="btnEN" onclick="setLang('en')">ENG</button>
     </div>
 
-    <!-- Mobile: single flag button, tap to switch language -->
-    <button class="lang-flag" id="langFlag" type="button" onclick="toggleLang()"
-            aria-label="Cambiar idioma / Switch language">
-      <span class="flag flag-sv" aria-hidden="true">
-        <svg viewBox="0 0 24 16" width="24" height="16">
-          <rect width="24" height="16" fill="#fff"/>
-          <rect width="24" height="5" y="0"  fill="#0F47AF"/>
-          <rect width="24" height="5" y="11" fill="#0F47AF"/>
-          <circle cx="12" cy="8" r="2.1" fill="none" stroke="#0F47AF" stroke-width="1"/>
-        </svg>
-      </span>
-      <span class="flag flag-us" aria-hidden="true">
-        <svg viewBox="0 0 24 16" width="24" height="16">
-          <rect width="24" height="16" fill="#fff"/>
-          <g fill="#B22234">
-            <rect width="24" height="1.85" y="0"/><rect width="24" height="1.85" y="3.7"/>
-            <rect width="24" height="1.85" y="7.4"/><rect width="24" height="1.85" y="11.1"/>
-            <rect width="24" height="1.85" y="14.15"/>
-          </g>
-          <rect width="10" height="8.6" fill="#3C3B6E"/>
-        </svg>
-      </span>
-    </button>
+    <!-- Mobile: one glass capsule holding the flag and the burger -->
+    <div class="mobile-controls">
+      <button class="lang-flag" id="langFlag" type="button" onclick="toggleLang()"
+              aria-label="Cambiar idioma / Switch language">
+        <!-- El Salvador: equal cobalt/white/cobalt bands + coat-of-arms triangle -->
+        <span class="flag flag-sv" aria-hidden="true">
+          <svg viewBox="0 0 21 12" width="21" height="12">
+            <rect width="21" height="12" fill="#0F47AF"/>
+            <rect y="4" width="21" height="4" fill="#fff"/>
+            <path d="M10.5 4.7 L12.6 7.5 L8.4 7.5 Z" fill="#C8B273" stroke="#1F5C3D" stroke-width=".35"/>
+            <path d="M9.5 7.5 L10.2 6.4 L10.9 7.5 M11 7.5 L11.6 6.7 L12.1 7.5" fill="#1F5C3D"/>
+            <rect x="8.4" y="7.5" width="4.2" height=".45" fill="#D4A02A"/>
+          </svg>
+        </span>
+        <!-- United States: 13 stripes, canton with star field -->
+        <span class="flag flag-us" aria-hidden="true">
+          <svg viewBox="0 0 21 12" width="21" height="12">
+            <rect width="21" height="12" fill="#fff"/>
+            <g fill="#B22234">
+              <rect width="21" height=".92" y="0"/><rect width="21" height=".92" y="1.85"/>
+              <rect width="21" height=".92" y="3.69"/><rect width="21" height=".92" y="5.54"/>
+              <rect width="21" height=".92" y="7.38"/><rect width="21" height=".92" y="9.23"/>
+              <rect width="21" height=".92" y="11.08"/>
+            </g>
+            <rect width="8.4" height="6.46" fill="#3C3B6E"/>
+            <g fill="#fff">
+              <circle cx="1.4" cy="1.1" r=".38"/><circle cx="3.2" cy="1.1" r=".38"/>
+              <circle cx="5"   cy="1.1" r=".38"/><circle cx="6.8" cy="1.1" r=".38"/>
+              <circle cx="2.3" cy="2.3" r=".38"/><circle cx="4.1" cy="2.3" r=".38"/>
+              <circle cx="5.9" cy="2.3" r=".38"/>
+              <circle cx="1.4" cy="3.5" r=".38"/><circle cx="3.2" cy="3.5" r=".38"/>
+              <circle cx="5"   cy="3.5" r=".38"/><circle cx="6.8" cy="3.5" r=".38"/>
+              <circle cx="2.3" cy="4.7" r=".38"/><circle cx="4.1" cy="4.7" r=".38"/>
+              <circle cx="5.9" cy="4.7" r=".38"/>
+              <circle cx="1.4" cy="5.8" r=".38"/><circle cx="3.2" cy="5.8" r=".38"/>
+              <circle cx="5"   cy="5.8" r=".38"/><circle cx="6.8" cy="5.8" r=".38"/>
+            </g>
+          </svg>
+        </span>
+      </button>
 
-    <!-- Mobile: hamburger, becomes an X while the menu is open -->
-    <button class="nav-burger" id="navBurger" type="button"
-            aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
-      <span class="burger-bar"></span>
-      <span class="burger-bar"></span>
-      <span class="burger-bar"></span>
-    </button>
+      <span class="mc-divider" aria-hidden="true"></span>
+
+      <!-- Hamburger, becomes an X while the menu is open -->
+      <button class="nav-burger" id="navBurger" type="button"
+              aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1759,6 +1793,27 @@ function toggleLang() {
 (function () {
   const saved = localStorage.getItem('esv-lang') || 'es';
   setLang(saved);
+})();
+
+/* ============================================================
+   HEADER CONTRAST, flip the logo dark once it leaves the hero
+   The hero is dark and everything below it is cream, so the white
+   logo vanishes as soon as the fixed header passes the hero.
+   ============================================================ */
+(function () {
+  const hero = document.getElementById('inicio');
+  const logo = document.querySelector('.site-logo');
+  if (!hero || !logo) return;
+
+  function update() {
+    /* Compare against the logo's own centre, not a guessed offset */
+    const mid = logo.getBoundingClientRect().top + logo.offsetHeight / 2;
+    document.body.classList.toggle('header-on-light', hero.getBoundingClientRect().bottom < mid);
+  }
+
+  update();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
 })();
 
 /* ============================================================
