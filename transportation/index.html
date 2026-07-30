@@ -443,22 +443,31 @@ section { padding: 100px 48px; }
   margin: 2px 0 0;
   max-width: 380px;
 }
+/* Outlined pill that inverts to solid white on hover or tap */
 .acc-cta {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 500;
-  color: rgba(244,239,230,0.88);
+  color: var(--cream-light);
   text-decoration: none;
-  padding: 6px 0;
-  border-bottom: 1px solid rgba(244,239,230,0.28);
+  padding: 10px 22px;
+  border: 1px solid rgba(244,239,230,0.55);
+  border-radius: 50px;
+  background: transparent;
   width: fit-content;
-  margin-top: 6px;
-  transition: border-color 0.2s, gap 0.2s, color 0.2s;
+  margin-top: 10px;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease;
 }
-.acc-cta:hover { border-color: rgba(244,239,230,0.72); color: var(--cream-light); gap: 10px; }
+.acc-cta:hover,
+.acc-cta:focus-visible,
+.acc-cta.tapped {
+  background: var(--cream-light);
+  border-color: var(--cream-light);
+  color: var(--brown-dark);
+}
 
 @media (prefers-reduced-motion: reduce) {
   .acc-card { transition: none; }
@@ -710,13 +719,19 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
   /* Once open, the pill inside the card carries the title, so drop
      this one rather than showing it twice. Chevron stays. */
   .acc-card.active .acc-mob-title { opacity: 0; }
+  /* Arrow is drawn pointing right; it sits rotated down while the card
+     is closed, then swings back to horizontal as a call to action. */
   .acc-mob-chevron {
-    font-size: 10px;
-    color: rgba(244,239,230,0.62);
-    transition: transform 0.38s ease;
+    display: block;
+    width: 16px; height: 16px;
+    background-color: rgba(244,239,230,0.62);
+    -webkit-mask: url('right-arrow.png') center / contain no-repeat;
+    mask: url('right-arrow.png') center / contain no-repeat;
+    transform: rotate(90deg);
+    transition: transform 0.38s ease, background-color 0.2s;
     flex-shrink: 0;
   }
-  .acc-card.active .acc-mob-chevron { transform: rotate(180deg); }
+  .acc-card.active .acc-mob-chevron { transform: rotate(0deg); background-color: var(--cream-light); }
   .acc-body { padding: 20px 20px 26px; }
   .acc-title { font-size: 18px; }
   .acc-desc { font-size: 13px; }
@@ -920,12 +935,12 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       </div>
       <div class="acc-mob-header" aria-hidden="true">
         <span class="acc-mob-title" id="t-sol_air_mob">Transporte Aéreo</span>
-        <span class="acc-mob-chevron">▼</span>
+        <span class="acc-mob-chevron" aria-hidden="true"></span>
       </div>
       <div class="acc-body">
         <span class="acc-tag"><span id="t-sol_air_h">Transporte Aéreo</span></span>
         <p class="acc-desc" id="t-sol_air_p">Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.</p>
-        <a href="#cotizar" class="acc-cta" id="t-sol_air_cta">Cotizar este servicio →</a>
+        <a href="#cotizar" class="acc-cta" id="t-sol_air_cta">Cotizar este servicio</a>
       </div>
     </article>
 
@@ -948,12 +963,12 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       </div>
       <div class="acc-mob-header" aria-hidden="true">
         <span class="acc-mob-title" id="t-sol_ground_mob">Transporte Terrestre</span>
-        <span class="acc-mob-chevron">▼</span>
+        <span class="acc-mob-chevron" aria-hidden="true"></span>
       </div>
       <div class="acc-body">
         <span class="acc-tag"><span id="t-sol_ground_h">Transporte Terrestre</span></span>
         <p class="acc-desc" id="t-sol_ground_p">Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.</p>
-        <a href="#cotizar" class="acc-cta" id="t-sol_ground_cta">Cotizar este servicio →</a>
+        <a href="#cotizar" class="acc-cta" id="t-sol_ground_cta">Cotizar este servicio</a>
       </div>
     </article>
 
@@ -976,12 +991,12 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       </div>
       <div class="acc-mob-header" aria-hidden="true">
         <span class="acc-mob-title" id="t-sol_ocean_mob">Transporte Marítimo</span>
-        <span class="acc-mob-chevron">▼</span>
+        <span class="acc-mob-chevron" aria-hidden="true"></span>
       </div>
       <div class="acc-body">
         <span class="acc-tag"><span id="t-sol_ocean_h">Transporte Marítimo</span></span>
         <p class="acc-desc" id="t-sol_ocean_p">Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.</p>
-        <a href="#cotizar" class="acc-cta" id="t-sol_ocean_cta">Cotizar este servicio →</a>
+        <a href="#cotizar" class="acc-cta" id="t-sol_ocean_cta">Cotizar este servicio</a>
       </div>
     </article>
 
@@ -1004,12 +1019,12 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       </div>
       <div class="acc-mob-header" aria-hidden="true">
         <span class="acc-mob-title" id="t-sol_urgent_mob">Carga Urgente</span>
-        <span class="acc-mob-chevron">▼</span>
+        <span class="acc-mob-chevron" aria-hidden="true"></span>
       </div>
       <div class="acc-body">
         <span class="acc-tag"><span id="t-sol_urgent_h">Carga Urgente y Emergencias</span></span>
         <p class="acc-desc" id="t-sol_urgent_p">Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.</p>
-        <a href="#cotizar" class="acc-cta" id="t-sol_urgent_cta">Cotizar este servicio →</a>
+        <a href="#cotizar" class="acc-cta" id="t-sol_urgent_cta">Cotizar este servicio</a>
       </div>
     </article>
 
@@ -1635,25 +1650,25 @@ const _T = {
   'tag_air':        ['Aéreo', 'Air'],
   'sol_air_h':      ['Transporte Aéreo', 'Air Freight'],
   'sol_air_p':      ['Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.', 'General and urgent cargo where speed and reliability are the priority. We coordinate with the right operators based on origin, destination, and cargo type.'],
-  'sol_air_cta':    ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_air_cta':    ['Cotizar este servicio', 'Get a quote'],
   'sol_air_mob':    ['Transporte Aéreo', 'Air Freight'],
   'pill_air':       ['Aéreo', 'Air'],
   'tag_ground':     ['Terrestre', 'Ground'],
   'sol_ground_h':   ['Transporte Terrestre', 'Ground Transport'],
   'sol_ground_p':   ['Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.', 'Domestic, cross-border, full-load, and consolidated movement coordinated through the right partners. From El Salvador across Central America and beyond.'],
-  'sol_ground_cta': ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_ground_cta': ['Cotizar este servicio', 'Get a quote'],
   'sol_ground_mob': ['Transporte Terrestre', 'Ground Transport'],
   'pill_ground':    ['Terrestre', 'Ground'],
   'tag_ocean':      ['Marítimo', 'Ocean'],
   'sol_ocean_h':    ['Transporte Marítimo', 'Ocean Freight'],
   'sol_ocean_p':    ['Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.', 'Planned, cost-efficient cargo movement through maritime logistics partners. Ideal for import and export volumes that benefit from economies of scale.'],
-  'sol_ocean_cta':  ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_ocean_cta':  ['Cotizar este servicio', 'Get a quote'],
   'sol_ocean_mob':  ['Transporte Marítimo', 'Ocean Freight'],
   'pill_ocean':     ['Marítimo', 'Ocean'],
   'tag_urgent':     ['Urgente', 'Urgent'],
   'sol_urgent_h':   ['Carga Urgente y Emergencias', 'Urgent Cargo & Emergencies'],
   'sol_urgent_p':   ['Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.', 'For production-stopping situations, industrial, automotive, or time-critical operations. We assess the best available solution and act with urgency.'],
-  'sol_urgent_cta': ['Cotizar este servicio →', 'Get a quote →'],
+  'sol_urgent_cta': ['Cotizar este servicio', 'Get a quote'],
   'sol_urgent_mob': ['Carga Urgente', 'Urgent Cargo'],
   'pill_urgent':    ['Urgente', 'Urgent'],
   /* Process */
@@ -1765,6 +1780,22 @@ function toggleLang() {
 (function () {
   const saved = localStorage.getItem('esv-lang') || 'es';
   setLang(saved);
+})();
+
+/* ============================================================
+   CTA TAP STATE
+   :hover is unreliable on touch, so paint the inverted state on
+   touchstart and clear it once the finger lifts.
+   ============================================================ */
+(function () {
+  document.querySelectorAll('.acc-cta').forEach(function (cta) {
+    cta.addEventListener('touchstart', function () { cta.classList.add('tapped'); }, { passive: true });
+    ['touchend', 'touchcancel'].forEach(function (ev) {
+      cta.addEventListener(ev, function () {
+        setTimeout(function () { cta.classList.remove('tapped'); }, 180);
+      }, { passive: true });
+    });
+  });
 })();
 
 /* ============================================================
