@@ -229,11 +229,11 @@ section { padding: 100px 48px; }
   transition: transform 0.44s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .acc-card.active .acc-bg {
-  animation: cardDrift 14s ease-in-out infinite alternate;
+  animation: cardDrift 9s ease-in-out infinite alternate;
 }
 @keyframes cardDrift {
-  from { transform: scale(1)    translate(0,    0);    }
-  to   { transform: scale(1.08) translate(2.5%, -1.5%); }
+  from { transform: scale(1.03) translate(-1%,   0.5%); }
+  to   { transform: scale(1.16) translate(3.5%, -3%);   }
 }
 @media (prefers-reduced-motion: reduce) {
   .acc-card.active .acc-bg { animation: none; }
@@ -772,7 +772,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Transporte Terrestre">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: center 50%;"></div>
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: 51% 63%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ground">Terrestre</span>
@@ -794,7 +794,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Transporte Marítimo">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: center 42%;"></div>
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: 68% 46%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ocean">Marítimo</span>
@@ -816,7 +816,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Carga Urgente y Emergencias">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 62% 60%;"></div>
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 48% 46%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
@@ -888,7 +888,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
       <p id="t-trust4_p">Trabajamos con operadores y socios logísticos seleccionados por confiabilidad y trayectoria, no solo por precio.</p>
     </div>
     <div class="trust-card">
-      <div class="trust-icon" aria-hidden="true">CM</div>
+      <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('message.png')"></span></div>
       <h3 id="t-trust5_h">Comunicación clara</h3>
       <p id="t-trust5_p">Mantenemos al cliente informado durante todo el proceso. Usted sabe qué pasa con su carga sin necesitar perseguir información.</p>
     </div>
