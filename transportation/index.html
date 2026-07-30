@@ -370,7 +370,9 @@ section { padding: 100px 48px; }
 #proceso { background: var(--white); border-radius: 32px; margin: 0 24px; padding: 100px 48px; }
 .proc-header { text-align: center; margin-bottom: 56px; }
 .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1100px; margin: 0 auto; }
-.process-step { }
+.process-step { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.process-step.visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .process-step { opacity: 1; transform: none; transition: none; } }
 .step-num {
   font-family: var(--serif); font-size: 52px; font-weight: 700;
   color: rgba(44,31,20,0.07); line-height: 1; margin-bottom: 20px;
@@ -773,7 +775,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
     </h2>
   </div>
 
-  <div class="process-grid reveal">
+  <div class="process-grid">
     <div class="process-step">
       <div class="step-num" aria-hidden="true">01</div>
       <h3 id="t-step1_h">Entendemos su carga</h3>
@@ -1089,16 +1091,21 @@ reveals.forEach(el => revealObserver.observe(el));
    ============================================================ */
 (function() {
   const stepNums = document.querySelectorAll('.step-num');
+  const steps = document.querySelectorAll('.process-step');
   const proc = document.getElementById('proceso');
   if (!proc || !stepNums.length) return;
+  function revealStep(i) {
+    if (stepNums[i]) stepNums[i].classList.add('lit');
+    if (steps[i]) steps[i].classList.add('visible');
+  }
   let fired = false;
   const obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
       if (e.isIntersecting && !fired) {
         fired = true;
-        stepNums[0].classList.add('lit');
-        setTimeout(function() { stepNums[1] && stepNums[1].classList.add('lit'); }, 5000);
-        setTimeout(function() { stepNums[2] && stepNums[2].classList.add('lit'); }, 10000);
+        revealStep(0);
+        setTimeout(function() { revealStep(1); }, 5000);
+        setTimeout(function() { revealStep(2); }, 10000);
         obs.disconnect();
       }
     });
