@@ -367,10 +367,10 @@ section { padding: 100px 48px; }
 /* ============================================================
    PROCESS
    ============================================================ */
-#proceso { background: var(--white); border-radius: 32px; margin: 0 24px; padding: 100px 48px; }
+#proceso { background: var(--white); border-radius: 32px 32px 0 0; margin: 0 24px; padding: 100px 48px 80px; }
 .proc-header { text-align: center; margin-bottom: 56px; }
 .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 1100px; margin: 0 auto; }
-.process-step { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.process-step { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; text-align: center; }
 .process-step.visible { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .process-step { opacity: 1; transform: none; transition: none; } }
 .step-num {
@@ -409,7 +409,7 @@ section { padding: 100px 48px; }
 /* ============================================================
    QUOTE FORM, 3-STEP
    ============================================================ */
-#cotizar { background: var(--white); border-radius: 32px; margin: 0 24px; padding: 100px 48px; }
+#cotizar { background: var(--white); border-radius: 0 0 32px 32px; margin: 0 24px; padding: 80px 48px 100px; }
 .quote-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
 .quote-info h2 { font-family: var(--serif); font-size: clamp(28px, 3vw, 42px); font-weight: 500; color: var(--brown-dark); margin-bottom: 16px; }
 .quote-info > p { font-size: 15px; color: var(--brown-light); line-height: 1.7; margin-bottom: 28px; }
@@ -491,19 +491,19 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
    RESPONSIVE, 900px (mirrors index.html breakpoint)
    ============================================================ */
 @media (max-width: 900px) {
-  /* Nav */
-  nav { position: sticky !important; top: 10px !important; left: auto !important; transform: none !important; width: fit-content; max-width: calc(100% - 32px); margin: 10px auto 0; padding: 4px; overflow: hidden; z-index: 100; }
-  .nav-links { gap: 0; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
-  .nav-links::-webkit-scrollbar { display: none; }
-  .nav-links a { font-size: 12px; padding: 9px 11px; }
-
-  /* Top bar */
-  .top-bar { padding: 14px 16px 0; }
-  .site-logo img { height: 32px; }
+  /* Top bar — fixed row 1 on mobile */
+  .top-bar { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; padding: 10px 16px !important; background: rgba(236,230,220,0.80); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 200; pointer-events: auto; }
+  .site-logo img { height: 28px; }
   .lang-toggle button { font-size: 12px; padding: 6px 11px; }
 
+  /* Nav pill — fixed row 2 on mobile, below top bar */
+  nav { position: fixed !important; top: 54px !important; left: 50% !important; transform: translateX(-50%) !important; width: fit-content; max-width: calc(100% - 32px); margin: 0; padding: 4px; overflow: hidden; z-index: 100; }
+  .nav-links { gap: 0; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { font-size: 12px; padding: 8px 10px; }
+
   /* Hero */
-  #inicio { margin: 10px 10px 0; border-radius: 20px; padding: 80px 20px 56px; }
+  #inicio { margin: 0; border-radius: 0; padding: 120px 20px 56px; min-height: 100dvh; }
   #inicio h1 { font-size: clamp(30px, 7.5vw, 44px); }
   .hero-actions { flex-direction: column; align-items: center; gap: 10px; }
   .hero-actions a { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
@@ -563,7 +563,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
   .trust-grid { grid-template-columns: 1fr; }
 
   /* Quote */
-  #cotizar { margin: 0 10px; border-radius: 20px; padding: 56px 20px; }
+  #cotizar { margin: 0 10px; border-radius: 0 0 20px 20px; padding: 56px 20px 72px; }
   .quote-layout { grid-template-columns: 1fr; gap: 40px; }
   .form-row-2 { grid-template-columns: 1fr; }
 
@@ -769,25 +769,22 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
      ============================================================ -->
 <section id="proceso" aria-labelledby="proc-heading">
   <div class="proc-header reveal">
-    <span class="section-label" id="t-proc_label">Cómo funciona</span>
-    <h2 class="section-title" id="proc-heading">
-      <span id="t-proc_h2_pre">Así trabajamos </span><em><span id="t-proc_h2_em">con usted</span></em>
-    </h2>
+    <span class="section-label" id="proc-heading" id="t-proc_label">Cómo funciona</span>
   </div>
 
   <div class="process-grid">
     <div class="process-step">
-      <div class="step-num" aria-hidden="true">01</div>
+      <div class="step-num" aria-hidden="true">1</div>
       <h3 id="t-step1_h">Entendemos su carga</h3>
-      <p id="t-step1_p">Analizamos el tipo de carga, urgencia, origen, destino, documentación requerida y riesgos operativos. Sin conocer el detalle, no podemos diseñar la solución correcta.</p>
+      <p id="t-step1_p">Analizamos el tipo de carga, urgencia, origen, destino, documentación necesaria y riesgos operativos. Sin conocer el detalle completo, no es posible diseñar la solución correcta.</p>
     </div>
     <div class="process-step">
-      <div class="step-num" aria-hidden="true">02</div>
+      <div class="step-num" aria-hidden="true">2</div>
       <h3 id="t-step2_h">Diseñamos y coordinamos</h3>
       <p id="t-step2_p">Seleccionamos y coordinamos el modo de transporte adecuado, los socios, la documentación, las aduanas y la protección de carga. Una solución cohesiva, no piezas sueltas.</p>
     </div>
     <div class="process-step">
-      <div class="step-num" aria-hidden="true">03</div>
+      <div class="step-num" aria-hidden="true">3</div>
       <h3 id="t-step3_h">Acompañamos hasta la resolución</h3>
       <p id="t-step3_p">Mantenemos al cliente informado y ayudamos a resolver problemas si el envío cambia, se retrasa o requiere intervención. No desaparecemos una vez contratado el servicio.</p>
     </div>
@@ -1104,8 +1101,8 @@ reveals.forEach(el => revealObserver.observe(el));
       if (e.isIntersecting && !fired) {
         fired = true;
         revealStep(0);
-        setTimeout(function() { revealStep(1); }, 5000);
-        setTimeout(function() { revealStep(2); }, 10000);
+        setTimeout(function() { revealStep(1); }, 2000);
+        setTimeout(function() { revealStep(2); }, 4000);
         obs.disconnect();
       }
     });
@@ -1233,13 +1230,20 @@ function showSuccess() {
   let timer;
 
   function goTo(n) {
-    slides[current].classList.remove('active');
+    const prev = slides[current];
+    // Freeze outgoing slide at its current Ken Burns position so it doesn't snap to scale(1)
+    prev.style.transform = getComputedStyle(prev).transform;
+    prev.style.animation = 'none';
+    prev.classList.remove('active');
     dots[current].classList.remove('active');
+    // Clear inline styles after fade-out completes (1.2s transition + buffer)
+    setTimeout(function() { prev.style.transform = ''; prev.style.animation = ''; }, 1400);
+
     current = (n + slides.length) % slides.length;
     const slide = slides[current];
     slide.style.animation = 'none';
-    void slide.offsetWidth; // force reflow to restart kenburns
-    slide.style.animation  = '';
+    void slide.offsetWidth;
+    slide.style.animation = '';
     slide.classList.add('active');
     dots[current].classList.add('active');
   }
@@ -1377,7 +1381,7 @@ const _T = {
   'proc_h2_pre':    ['Así trabajamos ', 'How we work '],
   'proc_h2_em':     ['con usted', 'with you'],
   'step1_h':        ['Entendemos su carga', 'We understand your cargo'],
-  'step1_p':        ['Analizamos el tipo de carga, urgencia, origen, destino, documentación requerida y riesgos operativos. Sin conocer el detalle, no podemos diseñar la solución correcta.', 'We analyze cargo type, urgency, origin, destination, required documentation, and operational risks. Without knowing the details, we cannot design the right solution.'],
+  'step1_p':        ['Analizamos el tipo de carga, urgencia, origen, destino, documentación necesaria y riesgos operativos. Sin conocer el detalle completo, no es posible diseñar la solución correcta.', 'We analyze cargo type, urgency, origin, destination, required documentation, and operational risks. Without knowing every detail, we cannot design the right solution for you.'],
   'step2_h':        ['Diseñamos y coordinamos', 'We design and coordinate'],
   'step2_p':        ['Seleccionamos y coordinamos el modo de transporte adecuado, los socios, la documentación, las aduanas y la protección de carga. Una solución cohesiva, no piezas sueltas.', 'We select and coordinate the appropriate transport mode, partners, documentation, customs, and cargo protection. A cohesive solution, not disconnected pieces.'],
   'step3_h':        ['Acompañamos hasta la resolución', 'We stay until resolution'],
