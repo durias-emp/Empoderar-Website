@@ -643,7 +643,9 @@ section { padding: 100px 48px; }
    FOOTER
    ============================================================ */
 footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; }
-.footer-logo img { height: 90px; width: auto; display: block; filter: brightness(0) saturate(100%) invert(15%) sepia(15%) saturate(600%) hue-rotate(5deg) brightness(0.4); opacity: 0.85; }
+.footer-logo { display: inline-block; text-decoration: none; }
+.footer-logo img { height: 90px; width: auto; display: block; filter: brightness(0) saturate(100%) invert(15%) sepia(15%) saturate(600%) hue-rotate(5deg) brightness(0.4); opacity: 0.85; transition: opacity 0.2s; }
+.footer-logo:hover img { opacity: 1; }
 .footer-tagline { font-size: 14px; color: var(--brown-light); }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
 .footer-links a { font-size: 13px; color: var(--brown-muted); text-decoration: none; transition: color 0.2s; }
@@ -1278,15 +1280,17 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
      FOOTER
      ============================================================ -->
 <footer>
-  <div class="footer-logo"><img src="../favicon empoderar.png" alt="EmpoderarSV"></div>
-  <div class="footer-tagline" id="t-footer_tag">División de Transporte, Un equipo. Un punto de contacto.</div>
+  <!-- The mark itself is the way back to the main site -->
+  <a href="../" class="footer-logo" aria-label="Volver a EmpoderarSV">
+    <img src="../favicon empoderar.png" alt="EmpoderarSV">
+  </a>
+  <div class="footer-tagline" id="t-footer_tag">Un equipo. Un punto de contacto.</div>
   <div class="footer-links">
     <a href="#inicio" id="t-f_inicio">Inicio</a>
     <a href="#soluciones" id="t-f_sol">Soluciones</a>
     <a href="#proceso" id="t-f_proc">Proceso</a>
     <a href="#cotizar" id="t-f_quot">Cotizar</a>
     <a href="#contacto" id="t-f_cont">Contacto</a>
-    <a href="../" id="t-f_main">← EmpoderarSV</a>
     <a href="mailto:hola@empoderarsv.com">hola@empoderarsv.com</a>
   </div>
   <div class="footer-divider"></div>
@@ -1728,13 +1732,12 @@ const _T = {
   'cont_box_btn':   ['Escribir a logística', 'Contact logistics'],
   'tracking_note':  ['Seguimiento de envíos para clientes, próximamente.', 'Shipment tracking for clients, coming soon.'],
   /* Footer */
-  'footer_tag':     ['División de Transporte, Un equipo. Un punto de contacto.', 'Transportation Division, One team. One point of contact.'],
+  'footer_tag':     ['Un equipo. Un punto de contacto.', 'One team. One point of contact.'],
   'f_inicio':       ['Inicio', 'Home'],
   'f_sol':          ['Soluciones', 'Solutions'],
   'f_proc':         ['Proceso', 'How It Works'],
   'f_quot':         ['Cotizar', 'Get a Quote'],
   'f_cont':         ['Contacto', 'Contact'],
-  'f_main':         ['← EmpoderarSV', '← EmpoderarSV'],
   'footer_copy':    ['© 2026 EmpoderarSV. Todos los derechos reservados.', '© 2026 EmpoderarSV. All rights reserved.'],
 };
 
