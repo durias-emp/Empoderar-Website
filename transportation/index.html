@@ -816,7 +816,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Carga Urgente y Emergencias">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 48% 46%;"></div>
+      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 68% 46%;"></div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
@@ -1174,8 +1174,8 @@ reveals.forEach(el => revealObserver.observe(el));
       if (e.isIntersecting && !fired) {
         fired = true;
         revealStep(0);
-        setTimeout(function() { revealStep(1); }, 2000);
-        setTimeout(function() { revealStep(2); }, 4000);
+        setTimeout(function() { revealStep(1); }, 1000);
+        setTimeout(function() { revealStep(2); }, 2000);
         obs.disconnect();
       }
     });
