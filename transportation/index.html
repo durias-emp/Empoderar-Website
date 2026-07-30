@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!-- Start the first hero image before the parser reaches it, it is the LCP element -->
+<link rel="preload" as="image" fetchpriority="high"
+      imagesrcset="img/hero-plane-1280.webp 1280w, img/hero-plane-1920.webp 1920w, img/hero-plane-2560.webp 2560w"
+      imagesizes="100vw" type="image/webp">
 <style>
 /* ============================================================
    EMPODERAR TRANSPORTATION, DESIGN SYSTEM
@@ -100,10 +104,15 @@ section { padding: 100px 48px; }
 .hero-slideshow { position: absolute; inset: 0; z-index: 0; }
 .hero-slide {
   position: absolute; inset: 0;
-  background-size: cover; background-position: center;
   opacity: 0;
   transition: opacity 1.2s ease-in-out;
   will-change: transform, opacity;
+}
+.hero-slide picture { display: block; width: 100%; height: 100%; }
+.hero-slide img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block;
 }
 .hero-slide.active {
   opacity: 1;
@@ -223,10 +232,14 @@ section { padding: 100px 48px; }
   position: absolute;
   inset: -5%;
   z-index: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
   will-change: transform;
   transition: transform 0.44s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.acc-bg picture { display: block; width: 100%; height: 100%; }
+.acc-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .acc-card.active .acc-bg {
   animation: cardDrift 9s ease-in-out infinite alternate;
@@ -686,9 +699,27 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
   <!-- Background image slideshow -->
   <div class="hero-slideshow" aria-hidden="true">
-    <div class="hero-slide active" style="background-image:url('PLANE copy.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('TRUCK.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('CARGOSHIP.jpg')"></div>
+    <div class="hero-slide active">
+      <picture>
+        <source type="image/webp" sizes="100vw"
+                srcset="img/hero-plane-1280.webp 1280w, img/hero-plane-1920.webp 1920w, img/hero-plane-2560.webp 2560w">
+        <img src="img/hero-plane.jpg" alt="" decoding="async" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="hero-slide">
+      <picture>
+        <source type="image/webp" sizes="100vw"
+                srcset="img/hero-truck-1280.webp 1280w, img/hero-truck-1920.webp 1920w, img/hero-truck-2560.webp 2560w">
+        <img src="img/hero-truck.jpg" alt="" decoding="async" fetchpriority="low">
+      </picture>
+    </div>
+    <div class="hero-slide">
+      <picture>
+        <source type="image/webp" sizes="100vw"
+                srcset="img/hero-ship-1280.webp 1280w, img/hero-ship-1920.webp 1920w, img/hero-ship-2560.webp 2560w">
+        <img src="img/hero-ship.jpg" alt="" decoding="async" fetchpriority="low">
+      </picture>
+    </div>
   </div>
 
   <!-- Darkening overlay -->
@@ -750,7 +781,13 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="true"
              aria-label="Transporte Aéreo">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('chris-leipelt-pRQCTeQTDwE-unsplash.jpg'); background-position: center 32%;"></div>
+      <div class="acc-bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 900px) 100vw, 720px"
+                  srcset="img/sol-air-640.webp 640w, img/sol-air-1024.webp 1024w, img/sol-air-1600.webp 1600w">
+          <img src="img/sol-air.jpg" alt="" decoding="async" loading="lazy" style="object-position: center 32%;">
+        </picture>
+      </div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_air">Aéreo</span>
@@ -772,7 +809,13 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Transporte Terrestre">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('artem-balashevsky-ZhNYKwjRMh4-unsplash.jpg'); background-position: 51% 63%;"></div>
+      <div class="acc-bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 900px) 100vw, 720px"
+                  srcset="img/sol-ground-640.webp 640w, img/sol-ground-1024.webp 1024w, img/sol-ground-1600.webp 1600w">
+          <img src="img/sol-ground.jpg" alt="" decoding="async" loading="lazy" style="object-position: 51% 63%;">
+        </picture>
+      </div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ground">Terrestre</span>
@@ -794,7 +837,13 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Transporte Marítimo">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('william-william-NndKt2kF1L4-unsplash.jpg'); background-position: 68% 46%;"></div>
+      <div class="acc-bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 900px) 100vw, 720px"
+                  srcset="img/sol-ocean-640.webp 640w, img/sol-ocean-1024.webp 1024w, img/sol-ocean-1600.webp 1600w">
+          <img src="img/sol-ocean.jpg" alt="" decoding="async" loading="lazy" style="object-position: 68% 46%;">
+        </picture>
+      </div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_ocean">Marítimo</span>
@@ -816,7 +865,13 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
              tabindex="0"
              aria-expanded="false"
              aria-label="Carga Urgente y Emergencias">
-      <div class="acc-bg" aria-hidden="true" style="background-image:url('jan-rosolino-DPWqOwZNwjA-unsplash.jpg'); background-position: 68% 46%;"></div>
+      <div class="acc-bg" aria-hidden="true">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 900px) 100vw, 720px"
+                  srcset="img/sol-urgent-640.webp 640w, img/sol-urgent-1024.webp 1024w, img/sol-urgent-1600.webp 1600w">
+          <img src="img/sol-urgent.jpg" alt="" decoding="async" loading="lazy" style="object-position: 68% 46%;">
+        </picture>
+      </div>
       <div class="acc-overlay" aria-hidden="true"></div>
       <div class="acc-pill-label" aria-hidden="true">
         <span class="acc-pill-text" id="t-pill_urgent">Urgente</span>
@@ -840,7 +895,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
      ============================================================ -->
 <section id="proceso" aria-labelledby="proc-heading">
   <div class="proc-header reveal">
-    <span class="section-label" id="proc-heading" id="t-proc_label">Cómo funciona</span>
+    <span class="section-label" id="proc-heading"><span id="t-proc_label">Cómo funciona</span></span>
   </div>
 
   <div class="process-grid">
@@ -912,7 +967,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
     <!-- Left: info -->
     <div class="quote-info reveal">
       <span class="section-label" id="t-quot_label">Cotización</span>
-      <h2 id="quot-heading" id="t-quot_h2">Cuéntenos sobre su carga</h2>
+      <h2 id="quot-heading"><span id="t-quot_h2">Cuéntenos sobre su carga</span></h2>
       <p id="t-quot_p">Respondemos cada solicitud con atención personalizada. Comparta los detalles de su necesidad logística y un especialista se comunicará con usted.</p>
       <div class="quote-expect">
         <strong id="t-quot_exp_h">¿Qué esperar?</strong>
