@@ -154,10 +154,6 @@ section { padding: 100px 48px; }
 .section-body { font-size: 17px; color: var(--brown-light); line-height: 1.7; max-width: 580px; }
 
 /* --- BUTTONS --- */
-.btn-primary { background: var(--brown-dark); color: var(--cream-light); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; border: none; cursor: pointer; }
-.btn-primary:hover { background: var(--brown-mid); transform: translateY(-2px); }
-.btn-secondary { background: transparent; color: var(--brown-dark); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; text-decoration: none; border: 1px solid rgba(92,74,53,0.3); transition: border-color 0.2s, transform 0.15s, background 0.2s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
-.btn-secondary:hover { border-color: var(--brown-mid); background: rgba(92,74,53,0.05); transform: translateY(-2px); }
 .btn-light { background: var(--cream-light); color: var(--brown-dark); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; border: none; cursor: pointer; }
 .btn-light:hover { background: var(--cream); transform: translateY(-2px); }
 .btn-outline-light { background: transparent; color: var(--cream-light); padding: 14px 30px; border-radius: 50px; font-family: var(--sans); font-size: 15px; text-decoration: none; border: 1px solid rgba(255,255,255,0.32); transition: border-color 0.2s, transform 0.15s, background 0.2s; display: inline-flex; align-items: center; gap: 8px; }
@@ -266,26 +262,6 @@ section { padding: 100px 48px; }
 .hero-dot.active { background: rgba(255,255,255,0.90); width: 40px; }
 
 /* ============================================================
-   QUICK NEEDS
-   ============================================================ */
-#necesidades {
-  padding: 52px 48px;
-  background: var(--cream-dark);
-}
-.needs-label { text-align: center; font-size: 14px; color: var(--brown-light); margin-bottom: 24px; }
-.needs-grid { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: 860px; margin: 0 auto; }
-.need-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 12px 20px; border-radius: 50px;
-  border: 1.5px solid rgba(140,122,101,0.25);
-  background: var(--white); color: var(--brown-dark);
-  font-family: var(--sans); font-size: 14px; font-weight: 500;
-  cursor: pointer; transition: all 0.18s; text-decoration: none; white-space: nowrap;
-}
-.need-btn:hover, .need-btn.selected { background: var(--brown-dark); color: var(--cream-light); border-color: var(--brown-dark); }
-.need-btn .ni { font-size: 17px; }
-
-/* ============================================================
    SOLUTIONS ACCORDION
    Desktop: 4 horizontal pillars, hover/click expands one.
    Mobile:  vertical stack, tap to expand.
@@ -369,11 +345,6 @@ section { padding: 100px 48px; }
 }
 .acc-card.active .acc-pill-label { opacity: 0; }
 
-.acc-pill-icon {
-  font-size: 22px;
-  line-height: 1;
-  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5));
-}
 .acc-pill-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -426,16 +397,7 @@ section { padding: 100px 48px; }
   letter-spacing: 0.02em;
   width: fit-content;
 }
-.acc-icon-sm { font-size: 13px; }
 
-.acc-title {
-  font-family: var(--serif);
-  font-size: clamp(18px, 1.75vw, 26px);
-  font-weight: 500;
-  color: var(--cream-light);
-  line-height: 1.18;
-  margin: 0;
-}
 .acc-desc {
   font-size: 13.5px;
   color: rgba(244,239,230,0.66);
@@ -683,11 +645,6 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
   .hero-pills { margin-top: 40px; padding-top: 32px; }
   .hero-pill-item { padding: 0 10px; }
 
-  /* Needs */
-  #necesidades { padding: 40px 16px; }
-  .needs-grid { gap: 8px; }
-  .need-btn { font-size: 13px; padding: 10px 16px; }
-
   /* Solutions accordion, mobile */
   #soluciones { padding: 56px 16px; }
   .acc-track { flex-direction: column; height: auto; gap: 8px; }
@@ -703,9 +660,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
     gap: 12px;
     padding: 18px 20px;
     pointer-events: none;
-  }
-  .acc-mob-icon { font-size: 20px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.55)); }
-  .acc-mob-title {
+  }  .acc-mob-title {
     font-family: var(--serif);
     font-size: 16px;
     font-weight: 500;
@@ -732,9 +687,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
     flex-shrink: 0;
   }
   .acc-card.active .acc-mob-chevron { transform: rotate(0deg); background-color: var(--cream-light); }
-  .acc-body { padding: 20px 20px 26px; }
-  .acc-title { font-size: 18px; }
-  .acc-desc { font-size: 13px; }
+  .acc-body { padding: 20px 20px 26px; }  .acc-desc { font-size: 13px; }
 
   /* Process */
   #proceso { margin: 0 10px; border-radius: 20px; padding: 56px 20px; }
@@ -1090,10 +1043,8 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
     </div>
     <div class="trust-card">
       <div class="trust-icon" aria-hidden="true"><span class="ti-glyph" style="--icon:url('lifebuoy.png')"></span></div>
-      <div class="trust-text">
-        <h3 id="t-trust6_h">Respuesta ante imprevistos</h3>
-        <p id="t-trust6_p">Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.</p>
-      </div>
+      <h3 id="t-trust6_h">Respuesta ante imprevistos</h3>
+      <p id="t-trust6_p">Cuando algo cambia, y en logística algo siempre puede cambiar, respondemos con opciones y soluciones concretas, no con disculpas.</p>
     </div>
   </div>
 </section>
@@ -1147,7 +1098,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
               <option value="special" id="t-f_svc_spc">Operación especializada</option>
               <option value="notsure" id="t-f_svc_ns">No estoy seguro</option>
             </select>
-            <span class="field-error" id="err-service" role="alert" id="t-err_service">Por favor seleccione una opción.</span>
+            <span class="field-error" id="err-service" role="alert">Por favor seleccione una opción.</span>
           </div>
           <div class="form-row-2">
             <div class="form-group">
@@ -1259,7 +1210,7 @@ footer { padding: 60px 48px 40px; display: flex; flex-direction: column; align-i
 
     <div class="contact-left reveal">
       <span class="section-label" id="t-cont_label">Contacto</span>
-      <h2 id="cont-heading" id="t-cont_h2">Hablemos de su operación</h2>
+      <h2 id="cont-heading"><span id="t-cont_h2">Hablemos de su operación</span></h2>
       <p id="t-cont_p">Para carga urgente, compleja o que requiere conversación directa, nuestro equipo de logística está disponible.</p>
       <div class="contact-detail">
         <div class="contact-item">
@@ -1400,17 +1351,6 @@ reveals.forEach(el => revealObserver.observe(el));
   });
 })();
 
-/* ============================================================
-   QUICK NEEDS SELECTOR
-   Prefills #f-service and scrolls to the quote form.
-   ============================================================ */
-function selectNeed(btn) {
-  document.querySelectorAll('.need-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  const sel = document.getElementById('f-service');
-  if (sel) sel.value = btn.dataset.value;
-  document.getElementById('cotizar').scrollIntoView({ behavior: 'smooth' });
-}
 
 /* ============================================================
    3-STEP FORM
@@ -1636,36 +1576,26 @@ const _T = {
   'pill4':          ['Protección de carga', 'Cargo protection'],
   'pill5':          ['Resolución de imprevistos', 'Problem resolution'],
   /* Needs selector */
-  'needs_q':        ['¿Cuál es su necesidad logística?', 'What is your logistics need?'],
-  'need_urgent':    ['Carga urgente', 'Urgent cargo'],
-  'need_air':       ['Transporte aéreo', 'Air freight'],
-  'need_ground':    ['Transporte terrestre', 'Ground transport'],
-  'need_ocean':     ['Transporte marítimo', 'Ocean freight'],
-  'need_special':   ['Operación especializada', 'Specialized operation'],
   /* Solutions */
   'sol_label':      ['Soluciones', 'Solutions'],
   'sol_h2_pre':     ['Más que transporte: ', 'More than transport: '],
   'sol_h2_em':      ['una solución completa', 'a complete solution'],
   'sol_sub':        ['Coordinamos el modo de transporte adecuado, los socios correctos, la documentación, las aduanas y la protección de carga, todo desde un solo punto de contacto.', 'We coordinate the right transport mode, the right partners, documentation, customs, and cargo protection, all from a single point of contact.'],
-  'tag_air':        ['Aéreo', 'Air'],
   'sol_air_h':      ['Transporte Aéreo', 'Air Freight'],
   'sol_air_p':      ['Carga general y urgente donde la velocidad y la confiabilidad son prioritarias. Coordinamos con los operadores correctos según el origen, destino y naturaleza de la carga.', 'General and urgent cargo where speed and reliability are the priority. We coordinate with the right operators based on origin, destination, and cargo type.'],
   'sol_air_cta':    ['Cotizar este servicio', 'Get a quote'],
   'sol_air_mob':    ['Transporte Aéreo', 'Air Freight'],
   'pill_air':       ['Aéreo', 'Air'],
-  'tag_ground':     ['Terrestre', 'Ground'],
   'sol_ground_h':   ['Transporte Terrestre', 'Ground Transport'],
   'sol_ground_p':   ['Movimiento doméstico, transfronterizo, carga completa y consolidada coordinado a través de los socios adecuados. Cubrimos desde El Salvador hacia Centroamérica y más allá.', 'Domestic, cross-border, full-load, and consolidated movement coordinated through the right partners. From El Salvador across Central America and beyond.'],
   'sol_ground_cta': ['Cotizar este servicio', 'Get a quote'],
   'sol_ground_mob': ['Transporte Terrestre', 'Ground Transport'],
   'pill_ground':    ['Terrestre', 'Ground'],
-  'tag_ocean':      ['Marítimo', 'Ocean'],
   'sol_ocean_h':    ['Transporte Marítimo', 'Ocean Freight'],
   'sol_ocean_p':    ['Movimiento de carga planificada y costo eficiente a través de socios de logística marítima. Ideal para volúmenes de importación y exportación que requieren economía de escala.', 'Planned, cost-efficient cargo movement through maritime logistics partners. Ideal for import and export volumes that benefit from economies of scale.'],
   'sol_ocean_cta':  ['Cotizar este servicio', 'Get a quote'],
   'sol_ocean_mob':  ['Transporte Marítimo', 'Ocean Freight'],
   'pill_ocean':     ['Marítimo', 'Ocean'],
-  'tag_urgent':     ['Urgente', 'Urgent'],
   'sol_urgent_h':   ['Carga Urgente y Emergencias', 'Urgent Cargo & Emergencies'],
   'sol_urgent_p':   ['Para situaciones que paralizan la producción, operaciones industriales, automotrices o de tiempo crítico. Evaluamos la mejor solución disponible y actuamos con urgencia.', 'For production-stopping situations, industrial, automotive, or time-critical operations. We assess the best available solution and act with urgency.'],
   'sol_urgent_cta': ['Cotizar este servicio', 'Get a quote'],
@@ -1673,16 +1603,12 @@ const _T = {
   'pill_urgent':    ['Urgente', 'Urgent'],
   /* Process */
   'proc_label':     ['Cómo funciona', 'How It Works'],
-  'proc_h2_pre':    ['Así trabajamos ', 'How we work '],
-  'proc_h2_em':     ['con usted', 'with you'],
   'step1_h':        ['Entendemos su carga', 'We understand your cargo'],
   'step1_p':        ['Analizamos el tipo de carga, urgencia, origen, destino, documentación necesaria y riesgos operativos. Sin conocer el detalle completo, no es posible diseñar la solución correcta.', 'We analyze cargo type, urgency, origin, destination, required documentation, and operational risks. Without knowing every detail, we cannot design the right solution for you.'],
   'step2_h':        ['Diseñamos y coordinamos', 'We design and coordinate'],
   'step2_p':        ['Seleccionamos y coordinamos el modo de transporte adecuado, los socios, la documentación, las aduanas y la protección de carga. Una solución cohesiva, no piezas sueltas.', 'We select and coordinate the appropriate transport mode, partners, documentation, customs, and cargo protection. A cohesive solution, not disconnected pieces.'],
   'step3_h':        ['Acompañamos hasta la resolución', 'We stay until resolution'],
   'step3_p':        ['Mantenemos al cliente informado y ayudamos a resolver problemas si el envío cambia, se retrasa o requiere intervención. No desaparecemos una vez contratado el servicio.', 'We keep the client informed and help resolve problems if the shipment changes, is delayed, or requires intervention. We do not disappear once the service is contracted.'],
-  'proc_quote':     ['"Un equipo. Un punto de contacto. Una solución coordinada."', '"One team. One point of contact. One coordinated solution."'],
-  'proc_cite':      ['Empoderar División de Transporte', 'Empoderar Transportation Division'],
   /* Trust */
   'trust_label':    ['¿Por qué Empoderar?', 'Why Empoderar?'],
   'trust_h2':       ['Un equipo. Un punto de contacto. Una solución coordinada.', 'One team. One point of contact. One coordinated solution.'],
